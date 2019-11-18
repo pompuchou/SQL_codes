@@ -1,11 +1,11 @@
-
+ï»¿
 select	left(A.CASENO, 6) as YM
 		,sum(convert(float,B.AMT)) as AMT
 from	al.dbo.tbl_pijia as A
 	left outer join
 		al.dbo.tbl_opd_order as B
 	on A.CASENO=B.CASENO
-where	A.G=1 and CLASS='ÃÄ«~' and remark = '¥@¬ü'
+where	A.G=1 and CLASS='è—¥å“' and remark = 'ä¸–ç¾'
 group by left(A.CASENO, 6)
 
 select	left(A.CASENO, 6) as YM
@@ -14,7 +14,7 @@ from	al.dbo.tbl_pijia as A
 	left outer join
 		al.dbo.tbl_opd_order as B
 	on A.CASENO=B.CASENO
-where	A.G=1 and CLASS='ÃÄ«~' and remark = '¥@¬ü' and CHRONIC=2
+where	A.G=1 and CLASS='è—¥å“' and remark = 'ä¸–ç¾' and CHRONIC=2
 group by left(A.CASENO, 6)
 
 
@@ -24,7 +24,7 @@ from	al.dbo.tbl_pijia as A
 	left outer join
 		al.dbo.tbl_opd_order as B
 	on A.CASENO=B.CASENO
-where	A.G=1 and CLASS='ÃÄ«~' and remark = '¥@¬ü'
+where	A.G=1 and CLASS='è—¥å“' and remark = 'ä¸–ç¾'
 group by A.SDATE
 
 select	A.SDATE as YM
@@ -33,5 +33,5 @@ from	al.dbo.tbl_pijia as A
 	left outer join
 		al.dbo.tbl_opd_order as B
 	on A.CASENO=B.CASENO
-where	A.G=1 and CLASS='ÃÄ«~' and remark = '¥@¬ü' and CHRONIC=2
+where	A.G=1 and CLASS='è—¥å“' and remark = 'ä¸–ç¾' and CHRONIC=2
 group by A.SDATE

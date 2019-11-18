@@ -1,10 +1,10 @@
---¾ã²z¸ê®Æ
+ï»¿--æ•´ç†è³‡æ–™
 declare @t table (SDATE datetime, VIST nvarchar(10), N int)
 declare @begin_date date
 declare @end_date date
 declare @YM nvarchar(10)
 
---³]©w¤é´Á
+--è¨­å®šæ—¥æœŸ
 set @YM='10810'
 set @begin_date=convert(nvarchar(8),convert(int,left(@YM,3))+1911)+right(@YM,2)+'01'
 set @end_date=dateadd(dd,-1,dateadd(mm,1,@begin_date))
@@ -13,9 +13,9 @@ set @end_date=dateadd(dd,-1,dateadd(mm,1,@begin_date))
 insert into @t
 select	SDATE, VIST, count(CASENO) as N
 from	al.dbo.tbl_opd
---where	POSINAME='°·«O' and ((VIST='¤W¤È' and SDATE in (select SDATE from al.dbo.tbl_schedule where VIST='¤W¤È')) or (VIST='¤U¤È' and SDATE in (select SDATE from al.dbo.tbl_schedule where VIST='¤U¤È')))
-where	POSINAME='°·«O' and RMNO in (1, 3) 
-		and ((VIST='¤W¤È' and SDATE in (select SDATE from al.dbo.tbl_schedule where VIST='¤W¤È')) or (VIST='¤U¤È' and SDATE in (select SDATE from al.dbo.tbl_schedule where VIST='¤U¤È')))
+--where	POSINAME='å¥ä¿' and ((VIST='ä¸Šåˆ' and SDATE in (select SDATE from al.dbo.tbl_schedule where VIST='ä¸Šåˆ')) or (VIST='ä¸‹åˆ' and SDATE in (select SDATE from al.dbo.tbl_schedule where VIST='ä¸‹åˆ')))
+where	POSINAME='å¥ä¿' and RMNO in (1, 3) 
+		and ((VIST='ä¸Šåˆ' and SDATE in (select SDATE from al.dbo.tbl_schedule where VIST='ä¸Šåˆ')) or (VIST='ä¸‹åˆ' and SDATE in (select SDATE from al.dbo.tbl_schedule where VIST='ä¸‹åˆ')))
 		and SDATE between @begin_date and @end_date
 group by SDATE, VIST
 order by SDATE, VIST desc
@@ -38,7 +38,7 @@ where YM='10803'
 select	*
 from	[al].[dbo].[tbl_schedule]
 
---¤ë¤ßµ¹ªº¸ê®Æ
+--æœˆå¿ƒçµ¦çš„è³‡æ–™
 --10803 1294
 --10803 1257
 --10804 1090

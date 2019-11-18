@@ -1,4 +1,4 @@
---regfee method:
+﻿--regfee method:
 select	*
 from al.dbo.tbl_pijia
 where	regfee in (47, 48)
@@ -34,7 +34,7 @@ where	regfee in (47, 48))
 (select	distinct CASENO
 from	al.dbo.tbl_opd_order
 where	rid in ('DES01','SUB0'))
-		and POSINAME='�۶O'
+		and POSINAME='自費'
 		and SDATE>'20171231'
 order by	SDATE
 --regfee method: 307

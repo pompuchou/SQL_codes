@@ -1,9 +1,9 @@
-declare	@u nvarchar(10)
+ï»¿declare	@u nvarchar(10)
 set	@u='H123338087'
 
 select	*
 from	al.dbo.tbl_opd_order
-where	uid=@u and CLASS='ÀËÅç'
+where	uid=@u and CLASS='æª¢é©—'
 
 select	*
 from	al.dbo.tbl_lab_record 

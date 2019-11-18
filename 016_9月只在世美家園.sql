@@ -1,11 +1,11 @@
---¤E¤ë
---¤@¦@¦³12ºØÃÄª«¥u¶}¦b¥@¬ü®a¶é,¦ıµ²ºâ¤¤³£¨S¦³¥X²{
+ï»¿--ä¹æœˆ
+--ä¸€å…±æœ‰12ç¨®è—¥ç‰©åªé–‹åœ¨ä¸–ç¾å®¶åœ’,ä½†çµç®—ä¸­éƒ½æ²’æœ‰å‡ºç¾
 select	distinct remark
 from	al.dbo.tbl_pijia as A
 	left outer join
 		al.dbo.tbl_opd_order as B
 	on A.CASENO=B.CASENO
-where	A.G=1 and CLASS='ÃÄ«~' and B.rid in ('EMYCO','OLUCKY','OMETHY500','SCHLO','OALDA','OTELIN','OFERI','OFEXO','IFLUANX','OACCU','OSERO100','OLYRICA') and A.SDATE between '20180901' and '20180930'
+where	A.G=1 and CLASS='è—¥å“' and B.rid in ('EMYCO','OLUCKY','OMETHY500','SCHLO','OALDA','OTELIN','OFERI','OFEXO','IFLUANX','OACCU','OSERO100','OLYRICA') and A.SDATE between '20180901' and '20180930'
 
 select	*
 from	al.dbo.p_order
@@ -19,17 +19,17 @@ from	al.dbo.tbl_pijia as A
 	left outer join
 		al.dbo.p_order as C
 	on B.rid=C.rid
-where	A.G=1 and CLASS='ÃÄ«~' and B.rid in ('EMYCO','OLUCKY','OMETHY500','SCHLO','OALDA','OTELIN','OFERI','OFEXO','IFLUANX','OACCU','OSERO100','OLYRICA') and A.SDATE between '20180901' and '20180930'
+where	A.G=1 and CLASS='è—¥å“' and B.rid in ('EMYCO','OLUCKY','OMETHY500','SCHLO','OALDA','OTELIN','OFERI','OFEXO','IFLUANX','OACCU','OSERO100','OLYRICA') and A.SDATE between '20180901' and '20180930'
 order by A.SDATE
 
---¤Q¤ë
---¤@¦@¦³9ºØÃÄª«¥u¶}¦b¥@¬ü®a¶é,¦ıµ²ºâ¤¤³£¨S¦³¥X²{
+--åæœˆ
+--ä¸€å…±æœ‰9ç¨®è—¥ç‰©åªé–‹åœ¨ä¸–ç¾å®¶åœ’,ä½†çµç®—ä¸­éƒ½æ²’æœ‰å‡ºç¾
 select	distinct remark
 from	al.dbo.tbl_pijia as A
 	left outer join
 		al.dbo.tbl_opd_order as B
 	on A.CASENO=B.CASENO
-where	A.G=1 and CLASS='ÃÄ«~' and B.rid in ('OLUCKY','OMETHY500','OALDA','OTELIN','OFERI','OFEXO','IFLUANX','OACCU','OLYRICA') and A.SDATE between '20181001' and '20181031'
+where	A.G=1 and CLASS='è—¥å“' and B.rid in ('OLUCKY','OMETHY500','OALDA','OTELIN','OFERI','OFEXO','IFLUANX','OACCU','OLYRICA') and A.SDATE between '20181001' and '20181031'
 
 select	*
 from	al.dbo.p_order
@@ -43,14 +43,14 @@ from	al.dbo.tbl_pijia as A
 	left outer join
 		al.dbo.p_order as C
 	on B.rid=C.rid
-where	A.G=1 and CLASS='ÃÄ«~' and B.rid in ('OLUCKY','OMETHY500','OALDA','OTELIN','OFERI','OFEXO','IFLUANX','OACCU','OLYRICA') and A.SDATE between '20181001' and '20181031'
+where	A.G=1 and CLASS='è—¥å“' and B.rid in ('OLUCKY','OMETHY500','OALDA','OTELIN','OFERI','OFEXO','IFLUANX','OACCU','OLYRICA') and A.SDATE between '20181001' and '20181031'
 order by A.SDATE
 
---¨ä¥¦®ø¥¢ÃÄª« ¥i©¿²¤¤£­p
---9¤ë 3¸~
+--å…¶å®ƒæ¶ˆå¤±è—¥ç‰© å¯å¿½ç•¥ä¸è¨ˆ
+--9æœˆ 3è…«
 --('OAMARM')
 
 
 
---10¤ë 
+--10æœˆ 
 --('ODEPATEC5',)

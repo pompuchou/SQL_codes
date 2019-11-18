@@ -1,13 +1,13 @@
-/*¤À²Õ°ò¥»¤W³¡¼vÅTÃÄª«
+ï»¿/*åˆ†çµ„åŸºæœ¬ä¸Šéƒ¨å½±éŸ¿è—¥ç‰©
 select	*
 from	al.dbo.tbl_pijia as A
 	left outer join
 		al.dbo.tbl_opd_order as B
 	on A.CASENO=B.CASENO
-where	G=0 and len(remark)>0 and POSINAME<>'¦Û¶O' and remark <>'®a¤H'
+where	G=0 and len(remark)>0 and POSINAME<>'è‡ªè²»' and remark <>'å®¶äºº'
 */
 --constructing
---¥ıºâ·í¤ë
+--å…ˆç®—ç•¶æœˆ
 declare	@t1 table (rid nvarchar(50), BILL_QTY float)
 declare	@t2 table (rid nvarchar(50), BILL_QTY float)
 declare	@t3 table (rid nvarchar(50), BILL_QTY float)
@@ -21,7 +21,7 @@ from	al.dbo.tbl_pijia as A
 	left outer join
 		al.dbo.tbl_opd_order as B
 	on A.CASENO=B.CASENO
-where	A.SDATE between '20181001' and '20181031' and A.G=1 and CLASS='ÃÄ«~' and A.remark <> '¥@¬ü'
+where	A.SDATE between '20181001' and '20181031' and A.G=1 and CLASS='è—¥å“' and A.remark <> 'ä¸–ç¾'
 group by	B.rid
 
 insert into @t2
@@ -31,7 +31,7 @@ from	al.dbo.tbl_pijia as A
 	left outer join
 		al.dbo.tbl_opd_order as B
 	on A.CASENO=B.CASENO
-where	A.SDATE between '20180901' and '20180930' and A.G=1 and CLASS='ÃÄ«~' and CHRONIC=2 and A.remark <> '¥@¬ü'
+where	A.SDATE between '20180901' and '20180930' and A.G=1 and CLASS='è—¥å“' and CHRONIC=2 and A.remark <> 'ä¸–ç¾'
 group by	B.rid
 
 
@@ -42,10 +42,10 @@ from	al.dbo.tbl_pijia as A
 	left outer join
 		al.dbo.tbl_opd_order as B
 	on A.CASENO=B.CASENO
-where	A.SDATE between '20180801' and '20180831' and A.G=1 and CLASS='ÃÄ«~' and CHRONIC=3 and A.remark <> '¥@¬ü'
+where	A.SDATE between '20180801' and '20180831' and A.G=1 and CLASS='è—¥å“' and CHRONIC=3 and A.remark <> 'ä¸–ç¾'
 group by	B.rid
 
---¥Ht1¬°¥D
+--ä»¥t1ç‚ºä¸»
 insert into @tt
 select	A.rid, A.BILL_QTY+ISNULL(B.BILL_QTY,0)+ISNULL(C.BILL_QTY,0)
 from	@t1 as A
@@ -90,7 +90,7 @@ from	@tt as A
 	on A.rid=B.rid
 order by B.r04
 
---¥ş³¡
+--å…¨éƒ¨
 select	*
 from	@u as A
 	left outer join
@@ -98,7 +98,7 @@ from	@u as A
 	on A.r04=B.r04
 order by A.r04
 
---¤@­Pªº 360
+--ä¸€è‡´çš„ 360
 select	*
 from	@u as A
 	left outer join
@@ -107,7 +107,7 @@ from	@u as A
 where	B.r04 is not null and A.BILL_QTY=B.[ N ]
 order by A.r04
 
---¤£¤@­Pªº 36
+--ä¸ä¸€è‡´çš„ 36
 select	*
 from	@u as A
 	left outer join
@@ -117,35 +117,35 @@ where	B.r04 is null or A.BILL_QTY<>B.[ N ]
 order by A.r04
 
 /*
---µo²{
+--ç™¼ç¾
 AC26976100	DOGMATYL FILM COATED TABLETS 200MG (SULPIRIDE)	30
 AC28078100	SULPIN F.C. TABLETS 200MG "S.T." (SULPIRIDE)	722
-=>AC28078100	Sulpin FC Tab 200mgµÎ´_¹ç(«HªF	752
+=>AC28078100	Sulpin FC Tab 200mgèˆ’å¾©å¯§(ä¿¡æ±	752
 AC41280100	KINXETIN CAPSULES 20MG "KINGDOM"(FLUOXETINE)	300
 AC41338100	JUXAC CAP.20MG	980
-=>AC41338100	Juxac Cap 20mg ¸ÑÆ{(°·³ì«H¤¸)	1280
+=>AC41338100	Juxac Cap 20mg è§£é¬±(å¥å–¬ä¿¡å…ƒ)	1280
 AB47553100	DEPATEC 500 MG FILM.COATED.TABLETS"PURZER"	140
 BC22008100	DEPAKINE CHRONO 500MG FILM COATED TABLETS	3100
 =>BC22008100	Depakine Chrono 500mg FC Tab	3240
 AC44631100	FELOPINE- S.R TABLETS 5MG	30
-=>AC49876100	Winlopine ER Tab 5mg¤¹­°(¥Ã«H)	30
+=>AC49876100	Winlopine ER Tab 5mgå…é™(æ°¸ä¿¡)	30
 BC23711100	DOXABEN XL TABLETS 4MG	56
-=>AA49920100	Xadosin SRFC Tab 4mgÂÄ¦h¤ß(¤¤	56
+=>AA49920100	Xadosin SRFC Tab 4mgè–©å¤šå¿ƒ(ä¸­	56
 BC18952100	PK-MERZ FILM-COATED TABLETS	60
-=>AC39431100	Dopadine FC Tab 100mg¦h¤Ú©w(·ç	60
+=>AC39431100	Dopadine FC Tab 100mgå¤šå·´å®š(ç‘	60
 
-¥t¥~­n¦X¨Ö
-AC453421G0	CLONOPAM TABLETS 0.5MG "KINGDOM"(CLONAZEPAM)(¾Tºä/½¦ºä)	1950
-AC453421G0	§JÅö¥­¿õ0.5²@§J	28
+å¦å¤–è¦åˆä½µ
+AC453421G0	CLONOPAM TABLETS 0.5MG "KINGDOM"(CLONAZEPAM)(é‹ç®”/è† ç®”)	1950
+AC453421G0	å…‹ç™²å¹³éŒ 0.5æ¯«å…‹	28
 
 AC09299100	LIGILIN CAPSULES	1294
-AC09299100	¾Y»ô¹ç½¦Ån	56
+AC09299100	é‹°é½Šå¯§è† å›Š	56
 
 AC49373100	PEDEN RETARD TABLETS 4 MG	804
-AC49373100	©¬µnªø®Ä¿õ 4 ²@§J	56
+AC49373100	å¸•ç™»é•·æ•ˆéŒ  4 æ¯«å…‹	56
 
-CONCERTA«Ü¥i¯à¬O¶E©Ò¶}ªº
-³o¼Ë´N³£¨S¦³®ø¥¢ªºÃÄª«¤F
+CONCERTAå¾ˆå¯èƒ½æ˜¯è¨ºæ‰€é–‹çš„
+é€™æ¨£å°±éƒ½æ²’æœ‰æ¶ˆå¤±çš„è—¥ç‰©äº†
 
 
 

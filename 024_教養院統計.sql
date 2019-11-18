@@ -1,4 +1,4 @@
--- sex
+ï»¿-- sex
 /*
 select	distinct uid, substring(uid,2,1) as sex
 from	BL.dbo.tbl_upload
@@ -18,7 +18,7 @@ select	uid
 from	@t
 order by	uid
 */
---¤J¦í®É¶¡
+--å…¥ä½æ™‚é–“
 declare @t table(uid varchar(10), insD date)
 
 insert into @t

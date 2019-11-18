@@ -1,5 +1,5 @@
---´ú¸Õ¬O§_°ß¤@
---¯uªº»İ­n¥[¤JHEATH_CARD, ¦³¤H¦P¤é¦P¶E¦P°·«O, ¦³¨âµ§±b, ¤@¯ë°·«O»P¹w¨¾°w
+ï»¿--æ¸¬è©¦æ˜¯å¦å”¯ä¸€
+--çœŸçš„éœ€è¦åŠ å…¥HEATH_CARD, æœ‰äººåŒæ—¥åŒè¨ºåŒå¥ä¿, æœ‰å…©ç­†å¸³, ä¸€èˆ¬å¥ä¿èˆ‡é é˜²é‡
 declare @t table (CASENO varchar(14), YM char(5), bid char(7), uid varchar(10))
 
 insert into @t
@@ -8,7 +8,7 @@ from	[AL].[dbo].[tbl_opd] as A
 		left outer join
 		[al].[dbo].[tbl_pijia] as B
 		on A.[SDATE]=B.[SDATE] and A.[VIST]=B.[VIST] and A.RMNO=B.[RMNO] and A.uid=B.uid and A.POSINAME=B.POSINAME and A.HEATH_CARD=B.HEATH_CARD 
-where	B.bid is not null and B.STATUS not in ('§@¼o','°h¨R') and len(B.bremark)=0
+where	B.bid is not null and B.STATUS not in ('ä½œå»¢','é€€æ²–') and len(B.bremark)=0
 
 select	CASENO, count(bid) as N
 from @t
@@ -98,7 +98,7 @@ from @t
 group by CASENO
 having count(bid)>1
 
-³ºµM¦³³o»ò¦h­«½Æªº­È
+ç«Ÿç„¶æœ‰é€™éº¼å¤šé‡è¤‡çš„å€¼
 AC170412302001	3
 AC170609101017	2
 AC171006302001	2
@@ -177,7 +177,7 @@ order by right(rid,5)
 
 select	right(bid,5) as num, count(bid) as N
 from	al.dbo.tbl_pijia
-where	STATUS not in ('§@¼o','°h¨R') and len(bremark)=0
+where	STATUS not in ('ä½œå»¢','é€€æ²–') and len(bremark)=0
 group by right(bid,5)
 order by right(bid,5)
 
@@ -201,30 +201,30 @@ select	*
 from	al.dbo.tbl_pijia
 where	YM='10703' and bid='0301017'
 
---20190612 ¥ş³£delete±¼¤F
+--20190612 å…¨éƒ½deleteæ‰äº†
 --33473 rows
 
---ÀË¬d§@¼o©Î¦³bremarkªº¦³¨S¦³CASENO?
+--æª¢æŸ¥ä½œå»¢æˆ–æœ‰bremarkçš„æœ‰æ²’æœ‰CASENO?
 select	*, CASENO
 from	al.dbo.tbl_pijia
-where	CASENO is not null and (len(bremark)<>0 or STATUS in ('§@¼o', '¹ï¨R'))
+where	CASENO is not null and (len(bremark)<>0 or STATUS in ('ä½œå»¢', 'å°æ²–'))
 
---ÀË¬d¨S¦³§@¼o¥B¨S¦³bremarkªº,¬O§_¤@©w¦³CASENO
+--æª¢æŸ¥æ²’æœ‰ä½œå»¢ä¸”æ²’æœ‰bremarkçš„,æ˜¯å¦ä¸€å®šæœ‰CASENO
 select	*, CASENO
 from	al.dbo.tbl_pijia
-where	CASENO is null and (len(bremark)=0 and STATUS not in ('§@¼o', '¹ï¨R'))
+where	CASENO is null and (len(bremark)=0 and STATUS not in ('ä½œå»¢', 'å°æ²–'))
 
---ÀË¬dtbl_pijia¤¤ªºcaseNO¬O§_°ß¤@
+--æª¢æŸ¥tbl_pijiaä¸­çš„caseNOæ˜¯å¦å”¯ä¸€
 select caseno, count(bid) as n
 from al.dbo.tbl_pijia
 group by caseno
 having count(bid)>1
 
---³q¹L´úÅç
+--é€šéæ¸¬é©—
 
 select	*
 from	al.dbo.tbl_pijia 
-where	right(bid,5)='00001' and len(bremark)=0 and STATUS not in ('§@¼o', '¹ï¨R')
+where	right(bid,5)='00001' and len(bremark)=0 and STATUS not in ('ä½œå»¢', 'å°æ²–')
 order by YM, SDATE
 
 select	*

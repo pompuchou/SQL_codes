@@ -1,9 +1,9 @@
-declare @t table(uid varchar(10))
+ï»¿declare @t table(uid varchar(10))
 
 insert into @t
 select	distinct uid
 from	al.dbo.tbl_pijia
-where	left(remark,2)='´º¤¯'
+where	left(remark,2)='æ™¯ä»'
 
 insert into @t
 SELECT distinct [uid]

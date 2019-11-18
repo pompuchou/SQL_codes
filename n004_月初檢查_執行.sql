@@ -1,10 +1,10 @@
---20190602 
+ï»¿--20190602 
 declare @begin_date date
 declare @end_date date
 declare @YM nvarchar(10)
 declare @t1 table (iid nvarchar(50), sname nvarchar(10), uid nvarchar(10), bd date, cname nvarchar(50))
 
---³]©w¤é´Á
+--è¨­å®šæ—¥æœŸ
 set @YM='10810'
 set @begin_date=convert(nvarchar(8),convert(int,left(@YM,3))+1911)+right(@YM,2)+'01'
 set @end_date=dateadd(dd,-1,dateadd(mm,1,@begin_date))
@@ -26,7 +26,7 @@ SELECT distinct B.[iid]
   left outer join
     [AL].[dbo].[tbl_patients] as C
   on A.uid=C.uid
-where (A.SDATE between @begin_date and @end_date) and RMNO in (1,3) and POSINAME='°·«O' and B.iid is not null
+where (A.SDATE between @begin_date and @end_date) and RMNO in (1,3) and POSINAME='å¥ä¿' and B.iid is not null
 
 
 --201901

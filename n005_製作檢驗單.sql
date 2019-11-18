@@ -1,11 +1,11 @@
-declare	@t1 table (cname nvarchar(10), mf nvarchar(2), bd date, uid nvarchar(10), abb nvarchar(50), tub nvarchar(10), npo nvarchar(10))
+ï»¿declare	@t1 table (cname nvarchar(10), mf nvarchar(2), bd date, uid nvarchar(10), abb nvarchar(50), tub nvarchar(10), npo nvarchar(10))
 declare	@t2 table (cname nvarchar(10), mf nvarchar(2), bd date, uid nvarchar(10), abb nvarchar(300), tub nvarchar(100), npo nvarchar(100))
-declare @d date	--¤é´Á
-declare @v nvarchar(5) --¤È§O
-declare @r nvarchar(5) --¶E§O
+declare @d date	--æ—¥æœŸ
+declare @v nvarchar(5) --åˆåˆ¥
+declare @r nvarchar(5) --è¨ºåˆ¥
 
 set	@d='20190912'
-set @v='¤W¤È'
+set @v='ä¸Šåˆ'
 set @r='1'
 
 insert into @t1
@@ -26,7 +26,7 @@ from	[AL].dbo.tbl_opd as A
 	left outer join
 		[AL].dbo.p_lab as D
 		on B.rid=D.rid
-where	A.POSINAME in ('°·«O','°·«O¤í¥d') and A.SDATE=@d and A.VIST=@v and A.RMNO=@r and B.[CLASS]='ÀËÅç'
+where	A.POSINAME in ('å¥ä¿','å¥ä¿æ¬ å¡') and A.SDATE=@d and A.VIST=@v and A.RMNO=@r and B.[CLASS]='æª¢é©—'
 order by	A.CASENO, B.OD_idx
 
 /*
@@ -37,13 +37,13 @@ select	C.cname,
 		C.uid,
 		(select '; ' + B.rid
 		from [AL].dbo.tbl_opd_order as B
-		where B.CASENO=A.CASENO and B.[CLASS]='ÀËÅç'
+		where B.CASENO=A.CASENO and B.[CLASS]='æª¢é©—'
 		for xml path('')) rid
 from	[AL].dbo.tbl_opd as A
 	left outer join
 		[AL].dbo.tbl_patients as C
 		on A.uid=C.uid
-where	A.POSINAME='°·«O' and A.SDATE=@d and A.VIST=@v and A.RMNO=@r
+where	A.POSINAME='å¥ä¿' and A.SDATE=@d and A.VIST=@v and A.RMNO=@r
 */
 
 insert into @t2

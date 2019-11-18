@@ -1,7 +1,7 @@
---³o¬O­Ó§Oªºmatching
+ï»¿--é€™æ˜¯å€‹åˆ¥çš„matching
 --2019/5/31
 
-/****** SSMS ¤¤ SelectTopNRows ©R¥Oªº«ü¥O½X  ******/
+/****** SSMS ä¸­ SelectTopNRows å‘½ä»¤çš„æŒ‡ä»¤ç¢¼  ******/
 declare @t_lab table (uid nvarchar(50), lid nvarchar(50), l05 date, iid nvarchar(50), nhi_code nvarchar(50), CASENO nvarchar(50))
 declare @t_order table (CASENO nvarchar(50), uid nvarchar(50), SDATE date, OD_idx tinyint, rid nvarchar(50))
 declare @t_result table (lid nvarchar(50), iid nvarchar(50), CASENO nvarchar(50), OD_idx tinyint)
@@ -23,7 +23,7 @@ SELECT A.[uid]
 	on A.iid=B.iid
 where A.iid not in ('A','CBC-DC','P1','P1-B','URT') and A.[uid]=@u and A.CASENO is null
 
-/****** SSMS ¤¤ SelectTopNRows ©R¥Oªº«ü¥O½X  ******/
+/****** SSMS ä¸­ SelectTopNRows å‘½ä»¤çš„æŒ‡ä»¤ç¢¼  ******/
 insert into @t_order
 SELECT A.[CASENO]
       ,A.[uid]
@@ -34,7 +34,7 @@ SELECT A.[CASENO]
   left outer join
 	[AL].[dbo].[tbl_lab_record] as B
 	on A.[CASENO]=B.[CASENO] and A.[OD_idx]=B.[OD_idx]
-  where A.CLASS='ÀËÅç' and A.[uid]=@u and B.lid is null
+  where A.CLASS='æª¢é©—' and A.[uid]=@u and B.lid is null
 
 insert into	@t_result
 select	A.lid

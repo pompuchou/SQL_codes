@@ -1,4 +1,4 @@
-/* ´N¬O­n±Ntbl_opd »P§å»ùÀÉ°t¹ï
+ï»¿/* å°±æ˜¯è¦å°‡tbl_opd èˆ‡æ‰¹åƒ¹æª”é…å°
 
 select	*
 delete
@@ -15,7 +15,7 @@ where [Pijia] is NOT NULL
 
 select	*
 from	j
-where	len(¦¬¾Ú»¡©ú) <> 0
+where	len(æ”¶æ“šèªªæ˜) <> 0
 
 select	*
 from	[al].[dbo].[f]
@@ -24,46 +24,46 @@ select	A.*, B.*
 from	[AL].[dbo].[tbl_opd] as A
 		left outer join
 		[al].[dbo].[f] as B
-		on A.[SDATE]=B.[¬İ¶E¤é´Á] and A.[VIST]=B.¤È§O and A.RMNO=B.¶E§O and A.uid=B.¨­¤ÀÃÒ¸¹
+		on A.[SDATE]=B.[çœ‹è¨ºæ—¥æœŸ] and A.[VIST]=B.åˆåˆ¥ and A.RMNO=B.è¨ºåˆ¥ and A.uid=B.èº«åˆ†è­‰è™Ÿ
 
 update	[AL].[dbo].[tbl_opd]
-set		[Pijia]=B.¦¬¾Ú¸¹
+set		[Pijia]=B.æ”¶æ“šè™Ÿ
 from	[AL].[dbo].[tbl_opd] as A
 		left outer join
 		[al].[dbo].[O] as B
-		on A.[SDATE]=B.[¬İ¶E¤é´Á] and A.[VIST]=B.¤È§O and A.RMNO=B.¶E§O and A.uid=B.¨­¤ÀÃÒ¸¹ and A.POSINAME=B.¨­¤À
-where	B.¦¬¾Ú¸¹ is not null and Pijia is null
---¥ş³¡26855µ§
---a 6165, 6164 ¶E©Ò
---b 3647, 3645 2 ¸t·R
---c 3832, 3830 2 ±Ò´¼
---d 1457, 1457 ¥Ñ®Ú
---e 1470, 1468 2 ¤è¦à
---f 1487µ§, 1486, 1 ´º¤¯
---g 1700, 1695, 5 ­»¶é
---h 631, 631 Æ[­µ
---i 1081, 1079 2 ®ç¶é
---j 642,642 ¸Û«H
---k 385, 378 ²»¨|
---l 348,348 ¬K·u
---m 475, 475 ¥@¬ü
---n 228, 226 ¾÷ºc­û¤u
---judi 77, 77 ¥qªk
---selfpay 2413, 2405 8 ¦Û¶O
---family 114, 114 ®a¤H
---©Ò¥H¬O¦]¬°¤T¤ë¸ê®ÆÁÙ¨S¦³¶×¤JªºÃö«Y
+		on A.[SDATE]=B.[çœ‹è¨ºæ—¥æœŸ] and A.[VIST]=B.åˆåˆ¥ and A.RMNO=B.è¨ºåˆ¥ and A.uid=B.èº«åˆ†è­‰è™Ÿ and A.POSINAME=B.èº«åˆ†
+where	B.æ”¶æ“šè™Ÿ is not null and Pijia is null
+--å…¨éƒ¨26855ç­†
+--a 6165, 6164 è¨ºæ‰€
+--b 3647, 3645 2 è–æ„›
+--c 3832, 3830 2 å•Ÿæ™º
+--d 1457, 1457 ç”±æ ¹
+--e 1470, 1468 2 æ–¹èˆŸ
+--f 1487ç­†, 1486, 1 æ™¯ä»
+--g 1700, 1695, 5 é¦™åœ’
+--h 631, 631 è§€éŸ³
+--i 1081, 1079 2 æ¡ƒåœ’
+--j 642,642 èª ä¿¡
+--k 385, 378 ç¥¥è‚²
+--l 348,348 æ˜¥æš‰
+--m 475, 475 ä¸–ç¾
+--n 228, 226 æ©Ÿæ§‹å“¡å·¥
+--judi 77, 77 å¸æ³•
+--selfpay 2413, 2405 8 è‡ªè²»
+--family 114, 114 å®¶äºº
+--æ‰€ä»¥æ˜¯å› ç‚ºä¸‰æœˆè³‡æ–™é‚„æ²’æœ‰åŒ¯å…¥çš„é—œä¿‚
 
 select	*
 from	[AL].[dbo].[tbl_opd] as A
 		left outer join
 		[al].[dbo].[g] as B
-		on A.[SDATE]=B.[¬İ¶E¤é´Á] and A.[VIST]=B.¤È§O and A.RMNO=B.¶E§O and A.uid=B.¨­¤ÀÃÒ¸¹
-where	B.¦¬¾Ú¸¹ is not null
-order by B.¦¬¾Ú¸¹
+		on A.[SDATE]=B.[çœ‹è¨ºæ—¥æœŸ] and A.[VIST]=B.åˆåˆ¥ and A.RMNO=B.è¨ºåˆ¥ and A.uid=B.èº«åˆ†è­‰è™Ÿ
+where	B.æ”¶æ“šè™Ÿ is not null
+order by B.æ”¶æ“šè™Ÿ
 
 select	*
 from f
-where ¦¬¾Ú¸¹ not in (select Pijia from al.dbo.tbl_opd)
+where æ”¶æ“šè™Ÿ not in (select Pijia from al.dbo.tbl_opd)
 
 select	*
 from	al.dbo.tbl_opd
@@ -75,20 +75,20 @@ where	uid='H102297367'
 
 select	*
 from A_judi
-where ¦¬¾Ú¸¹='0300153'
+where æ”¶æ“šè™Ÿ='0300153'
 
 select	*
 from f
-where ¦¬¾Ú¸¹ in (select Pijia from al.dbo.tbl_opd)
-order by	¦¬¾Ú¸¹
+where æ”¶æ“šè™Ÿ in (select Pijia from al.dbo.tbl_opd)
+order by	æ”¶æ“šè™Ÿ
 
 select	*
 from	al.dbo.tbl_opd
-where	Pijia in (select ¦¬¾Ú¸¹ from al.dbo.g)
+where	Pijia in (select æ”¶æ“šè™Ÿ from al.dbo.g)
 
 select	*
 from	al.dbo.tbl_opd
-where	Pijia not in (select ¦¬¾Ú¸¹ from al.dbo.A_judi)
+where	Pijia not in (select æ”¶æ“šè™Ÿ from al.dbo.A_judi)
 
 
 
@@ -98,7 +98,7 @@ from	tbl_opd
 where	sdate='20171205'
 
 
---¤Ï¦VPijiaÀÉ¤]­nmatch
+--åå‘Pijiaæª”ä¹Ÿè¦match
 select	*
 from	tbl_pijia
 where caseno is null
@@ -114,7 +114,7 @@ where	B.CASENO is not null and A.CASENO is null
 
 select	*
 from	tbl_pijia
-where remark='®ç¶é'
+where remark='æ¡ƒåœ’'
 order by CASENO
 order by SDATE, uid
 
@@ -122,17 +122,17 @@ select	*
 from	tbl_pijia
 where	CASENO is null
 
---¬O§_¦b±M®×¤º¥HÃÄª«Âå¥Oªí§@¬°¤À§O
---¹w³]¦b±M®×¤º
--- ('¸t·R','¸t·R­û¤u','±Ò´¼','±Ò´¼­û¤u','¥Ñ®Ú','¤è¦à','¤è¦à­û¤u','´º¤¯','­»¶é','­»¶é­û¤u','Æ[­µ','Æ[­µ­û¤u','®ç¶é','®ç¶é­û¤u','¸Û«H','²»¨|','¬K·u','¬K·u­û¤u','¥@¬ü')
---¹w³]¤£¦b±M®×¤º
---¦Û¶O´N¥ş¤£¦b½d³ò¤º
---('®a¤H')
+--æ˜¯å¦åœ¨å°ˆæ¡ˆå…§ä»¥è—¥ç‰©é†«ä»¤è¡¨ä½œç‚ºåˆ†åˆ¥
+--é è¨­åœ¨å°ˆæ¡ˆå…§
+-- ('è–æ„›','è–æ„›å“¡å·¥','å•Ÿæ™º','å•Ÿæ™ºå“¡å·¥','ç”±æ ¹','æ–¹èˆŸ','æ–¹èˆŸå“¡å·¥','æ™¯ä»','é¦™åœ’','é¦™åœ’å“¡å·¥','è§€éŸ³','è§€éŸ³å“¡å·¥','æ¡ƒåœ’','æ¡ƒåœ’å“¡å·¥','èª ä¿¡','ç¥¥è‚²','æ˜¥æš‰','æ˜¥æš‰å“¡å·¥','ä¸–ç¾')
+--é è¨­ä¸åœ¨å°ˆæ¡ˆå…§
+--è‡ªè²»å°±å…¨ä¸åœ¨ç¯„åœå…§
+--('å®¶äºº')
 
 
 select	*
 from	al.dbo.tbl_opd
-where	CASENO in (select CASENO from tbl_pijia where remark='­»¶é')
+where	CASENO in (select CASENO from tbl_pijia where remark='é¦™åœ’')
 order by CASENO
 
 select	*

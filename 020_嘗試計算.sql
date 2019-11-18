@@ -1,4 +1,4 @@
-/*
+ï»¿/*
 select sum(d27)
 from	cl.dbo.xml_ddata
 where	t3 between '10607' and '10612'
@@ -11,17 +11,17 @@ where	t3 between '10601' and '10606' and d35 in ('00158C','00184C')
 select distinct d35
 from	[CL].[dbo].[xml_ddata]
 
---²Ä¤@±i³B¤èºà¼Æ¥Ø
+--ç¬¬ä¸€å¼µè™•æ–¹ç®‹æ•¸ç›®
 select	distinct t3, d1, d2
 from	CL.dbo.xml_pdata
 where	t3 between '10801' and '10806'
 
---²Ä¤G±i³B¤èºà¼Æ¥Ø
+--ç¬¬äºŒå¼µè™•æ–¹ç®‹æ•¸ç›®
 select	distinct t3, d1, d2
 from	CL.dbo.xml_pdata
 where	t3 between '10707' and '10712' and p17='1'
 
---²Ä¤@±i³B¤èºàµ¹ÃÄ¤H¤é
+--ç¬¬ä¸€å¼µè™•æ–¹ç®‹çµ¦è—¥äººæ—¥
 declare @t table (t3 char(5), d1 char(2), d2 int, total_days int)
 insert into @t
 select	t3, d1, d2, max(p1)
@@ -32,7 +32,7 @@ group by t3,d1,d2
 select	sum(total_days) as total_days
 from @t
 
---²Ä¤G±i³B¤èºàµ¹ÃÄ¤H¤é
+--ç¬¬äºŒå¼µè™•æ–¹ç®‹çµ¦è—¥äººæ—¥
 declare @t table (t3 char(5), d1 char(2), d2 int, total_days int)
 insert into @t
 select	t3, d1, d2, max(p1)
@@ -43,12 +43,12 @@ group by t3,d1,d2
 select	sum(total_days) as total_days
 from @t
 
---²Ä¤@±i³B¤èºàÃÄ¶O
+--ç¬¬ä¸€å¼µè™•æ–¹ç®‹è—¥è²»
 select	sum(p12)
 from	CL.dbo.xml_pdata
 where	t3 between '10607' and '10612'
 
---²Ä¤G±i³B¤èºàÃÄ¶O
+--ç¬¬äºŒå¼µè™•æ–¹ç®‹è—¥è²»
 select	sum(p12)
 from	CL.dbo.xml_pdata
 where	t3 between '10601' and '10606' and p17='1'
@@ -92,14 +92,14 @@ insert into @t1
 select	*, case when amt<=500 then 1 when amt between 501 and 1000 then 2 when amt between 1001 and 1500 then 3 when amt between 1501 and 2000 then 4 when amt between 2001 and 2500 then 5 when amt between 2501 and 3000 then 6 when amt>3000 then 7 end
 from	@t
 
---²Ä¤@±i³B¤èºàµ¹ÃÄ¤H¤é
+--ç¬¬ä¸€å¼µè™•æ–¹ç®‹çµ¦è—¥äººæ—¥
 declare @u table (t3 char(5), d1 char(2), d2 int, total_days int)
 insert into @u
 select	t3, d1, d2, max(p1)
 from	CL.dbo.xml_pdata3
 group by t3,d1,d2
 
---²Ä¤G±i³B¤èºàµ¹ÃÄ¤H¤é
+--ç¬¬äºŒå¼µè™•æ–¹ç®‹çµ¦è—¥äººæ—¥
 declare @v table (t3 char(5), d1 char(2), d2 int, total_days int)
 insert into @v
 select	t3, d1, d2, max(p1)
@@ -116,7 +116,7 @@ group by t3,d1,d2
 --from	@t1
 --group by g
 
---§ä­ş¨Ç¤H¥Î³Ì¦h¿ú
+--æ‰¾å“ªäº›äººç”¨æœ€å¤šéŒ¢
 
 select	distinct uid
 from	al.dbo.tbl_opd as A
@@ -126,9 +126,9 @@ from	@t
 where	amt>10000) as B
 on A.t3=B.t3 and A.d1=B.d1 and A.d2=B.d2
 
---§ä­ş¨ÇÃÄª«³Ì¶Q
+--æ‰¾å“ªäº›è—¥ç‰©æœ€è²´
 
---ÃÄª«­ì¥»´N³o¼Ë¶}ªº,¤£¬O§Ú¶}©lªº,§Ú±µªº®É­Ô´N³o¼Ë
---­Ó®×¼ËºA´y­z
---±`¨£ªº¥D¶D°á¤@¹M,¯S§Oªº¥D¶D°á¤@¹M
---¦L¶H¤¤¤­¤ë°e¤T­Ó¥h¦í°|
+--è—¥ç‰©åŸæœ¬å°±é€™æ¨£é–‹çš„,ä¸æ˜¯æˆ‘é–‹å§‹çš„,æˆ‘æ¥çš„æ™‚å€™å°±é€™æ¨£
+--å€‹æ¡ˆæ¨£æ…‹æè¿°
+--å¸¸è¦‹çš„ä¸»è¨´å”¸ä¸€é,ç‰¹åˆ¥çš„ä¸»è¨´å”¸ä¸€é
+--å°è±¡ä¸­äº”æœˆé€ä¸‰å€‹å»ä½é™¢

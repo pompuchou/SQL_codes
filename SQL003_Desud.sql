@@ -1,4 +1,4 @@
---∞œ§¿∂E©“,±MÆ◊
+Ôªø--ÂçÄÂàÜË®∫ÊâÄ,Â∞àÊ°à
 declare	@t1 table(YM date, N int, amt float) 
 declare	@t2 table(YM date, N int, amt float) 
 declare	@t3 table(YM date, amt float) 
@@ -10,8 +10,8 @@ declare	@t8 table(YM date, amt float)
 declare	@t9 table(YM date, N int, amt float) 
 declare	@t10 table(YM date, amt float) 
 
---∂EπÓ∂O
---@t1 ±MÆ◊∂EπÓ∂O
+--Ë®∫ÂØüË≤ª
+--@t1 Â∞àÊ°àË®∫ÂØüË≤ª
 insert into @t1
 select	DATEADD(MONTH, DATEDIFF(MONTH, 0, A.SDATE), 0) AS [YM]
 		,count(A.CASENO) as N
@@ -21,7 +21,7 @@ from	[al].[dbo].[tbl_opd_order] as A
 		[al].[dbo].[tbl_pijia] as B
 	on	A.[CASENO]=B.[CASENO]
 	where	A.rid in ('00109C','00110C','00158C','00182C','00184C','01031','01031C','01032C')
-		and B.[Youmian] in ('æ˜∫c','æ˜≠´','æ˜∫a','æ˜∫÷')
+		and B.[Youmian] in ('Ê©üÊßã','Ê©üÈáç','Ê©üÊ¶Æ','Ê©üÁ¶è')
 		and A.SDATE between '20170301' and '20190430'
 group by	DATEADD(MONTH, DATEDIFF(MONTH, 0, A.SDATE), 0)
 order by	DATEADD(MONTH, DATEDIFF(MONTH, 0, A.SDATE), 0)
@@ -35,12 +35,12 @@ from	[al].[dbo].[tbl_opd_order] as A
 		[al].[dbo].[tbl_pijia] as B
 	on	A.[CASENO]=B.[CASENO]
 	where	A.rid in ('00109C','00110C','00158C','00182C','00184C','01031','01031C','01032C')
-		and B.[Youmian] not in ('æ˜∫c','æ˜≠´','æ˜∫a','æ˜∫÷')
+		and B.[Youmian] not in ('Ê©üÊßã','Ê©üÈáç','Ê©üÊ¶Æ','Ê©üÁ¶è')
 		and A.SDATE between '20170101' and '20190430'
 group by	DATEADD(MONTH, DATEDIFF(MONTH, 0, A.SDATE), 0)
 order by	DATEADD(MONTH, DATEDIFF(MONTH, 0, A.SDATE), 0)
 
---∂E¿¯∂O
+--Ë®∫ÁôÇË≤ª
 insert into @t3
 select	DATEADD(MONTH, DATEDIFF(MONTH, 0, A.SDATE), 0) AS [YM]
 		, sum(convert(float,AMT)) as AMT
@@ -50,7 +50,7 @@ from	[al].[dbo].[tbl_opd_order] as A
 	on	A.[CASENO]=B.[CASENO]
 	where	A.rid in ('45046','45102','45010','45087')
 		and A.SDATE between '20170301' and '20190430'
-		and B.[Youmian] in ('æ˜∫c','æ˜≠´','æ˜∫a','æ˜∫÷')
+		and B.[Youmian] in ('Ê©üÊßã','Ê©üÈáç','Ê©üÊ¶Æ','Ê©üÁ¶è')
 group by	DATEADD(MONTH, DATEDIFF(MONTH, 0, A.SDATE), 0)
 order by	DATEADD(MONTH, DATEDIFF(MONTH, 0, A.SDATE), 0)
 
@@ -63,11 +63,11 @@ from	[al].[dbo].[tbl_opd_order] as A
 	on	A.[CASENO]=B.[CASENO]
 	where	A.rid in ('45046','45102','45010','45087')
 		and A.SDATE between '20170301' and '20190430'
-		and B.[Youmian] not in ('æ˜∫c','æ˜≠´','æ˜∫a','æ˜∫÷')
+		and B.[Youmian] not in ('Ê©üÊßã','Ê©üÈáç','Ê©üÊ¶Æ','Ê©üÁ¶è')
 group by	DATEADD(MONTH, DATEDIFF(MONTH, 0, A.SDATE), 0)
 order by	DATEADD(MONTH, DATEDIFF(MONTH, 0, A.SDATE), 0)
 
---¿À≈Á∂O
+--Ê™¢È©óË≤ª
 insert into @t5
 select	DATEADD(MONTH, DATEDIFF(MONTH, 0, A.SDATE), 0) AS [YM]
 		, sum(convert(float,AMT)) as AMT
@@ -75,9 +75,9 @@ from	[al].[dbo].[tbl_opd_order] as A
 	left outer join
 		[al].[dbo].[tbl_pijia] as B
 	on	A.[CASENO]=B.[CASENO]
-	where	A.CLASS = '¿À≈Á'
+	where	A.CLASS = 'Ê™¢È©ó'
 		and A.SDATE between '20170301' and '20190430'
-		and B.[Youmian] in ('æ˜∫c','æ˜≠´','æ˜∫a','æ˜∫÷')
+		and B.[Youmian] in ('Ê©üÊßã','Ê©üÈáç','Ê©üÊ¶Æ','Ê©üÁ¶è')
 group by	DATEADD(MONTH, DATEDIFF(MONTH, 0, A.SDATE), 0)
 order by	DATEADD(MONTH, DATEDIFF(MONTH, 0, A.SDATE), 0)
 
@@ -88,14 +88,14 @@ from	[al].[dbo].[tbl_opd_order] as A
 	left outer join
 		[al].[dbo].[tbl_pijia] as B
 	on	A.[CASENO]=B.[CASENO]
-	where	A.CLASS = '¿À≈Á'
+	where	A.CLASS = 'Ê™¢È©ó'
 		and A.SDATE between '20170301' and '20190430'
-		and B.[Youmian] not in ('æ˜∫c','æ˜≠´','æ˜∫a','æ˜∫÷')
+		and B.[Youmian] not in ('Ê©üÊßã','Ê©üÈáç','Ê©üÊ¶Æ','Ê©üÁ¶è')
 group by	DATEADD(MONTH, DATEDIFF(MONTH, 0, A.SDATE), 0)
 order by	DATEADD(MONTH, DATEDIFF(MONTH, 0, A.SDATE), 0)
 
 
---¶ﬁ§Uøı
+--Ëàå‰∏ãÈå†
 insert into @t7
 select	DATEADD(MONTH, DATEDIFF(MONTH, 0, SDATE), 0) AS [YM]
 		,count(CASENO) as N
@@ -108,7 +108,7 @@ where	rid in ('DES01','SUB0'))
 group by	DATEADD(MONTH, DATEDIFF(MONTH, 0, SDATE), 0)
 order by	DATEADD(MONTH, DATEDIFF(MONTH, 0, SDATE), 0)
 
---±æ∏π∂O
+--ÊéõËôüË≤ª
 insert into @t8
 select	DATEADD(MONTH, DATEDIFF(MONTH, 0, SDATE), 0) AS [YM]
 		, sum(convert(float,RegFee)) as AMT
@@ -118,7 +118,7 @@ group by	DATEADD(MONTH, DATEDIFF(MONTH, 0, SDATE), 0)
 order by	DATEADD(MONTH, DATEDIFF(MONTH, 0, SDATE), 0)
 
 
---Ωw∞_∂D
+--Á∑©Ëµ∑Ë®¥
 insert into @t9
 select	DATEADD(MONTH, DATEDIFF(MONTH, 0, SDATE), 0) AS [YM]
 		, count(CASENO) as N
@@ -132,12 +132,12 @@ where	regfee in (47, 48))
 (select	distinct CASENO
 from	al.dbo.tbl_opd_order
 where	rid in ('DES01','SUB0'))
-		and POSINAME='¶€∂O'
+		and POSINAME='Ëá™Ë≤ª'
 		and SDATE>'20171231'
 group by	DATEADD(MONTH, DATEDIFF(MONTH, 0, SDATE), 0)
 order by	DATEADD(MONTH, DATEDIFF(MONTH, 0, SDATE), 0)
 
---•q™k≈≤©w
+--Âè∏Ê≥ïÈëëÂÆö
 insert into @t10
 select	DATEADD(MONTH, DATEDIFF(MONTH, 0, A.SDATE), 0) AS [YM]
 		, sum(convert(float,A.AMT)) as AMT

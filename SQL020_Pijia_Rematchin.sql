@@ -1,10 +1,10 @@
---20190612 created
---«e´X¤Ñ­«·s»s§@¤Ftbl_pijia
+ï»¿--20190612 created
+--å‰å¹¾å¤©é‡æ–°è£½ä½œäº†tbl_pijia
 
-/****** SSMS ¤¤ SelectTopNRows ©R¥Oªº«ü¥O½X  ******/
---±ø¥óSDATE, uid, bid, HEATH_CARD 29144µ§
---±ø¥óSDATE, uid, bid 29145µ§
---®t¦b­ş¸Ì?
+/****** SSMS ä¸­ SelectTopNRows å‘½ä»¤çš„æŒ‡ä»¤ç¢¼  ******/
+--æ¢ä»¶SDATE, uid, bid, HEATH_CARD 29144ç­†
+--æ¢ä»¶SDATE, uid, bid 29145ç­†
+--å·®åœ¨å“ªè£¡?
 SELECT A.[bid]
       ,A.[SDATE]
       ,A.[uid]
@@ -13,7 +13,7 @@ SELECT A.[bid]
 	left outer join
 		[BL].[dbo].[tbl_pijia] as B
 		on A.SDATE=B.SDATE and A.uid=B.uid and A.bid=B.rid
-where A.[STATUS]<>'§@¼o' and len(A.[bremark])=0
+where A.[STATUS]<>'ä½œå»¢' and len(A.[bremark])=0
 order by A.SDATE, A.bid
 
 SELECT A.[bid]
@@ -24,7 +24,7 @@ SELECT A.[bid]
 	left outer join
 		[BL].[dbo].[tbl_pijia] as B
 		on A.SDATE=B.SDATE and A.uid=B.uid and A.bid=B.rid and A.HEATH_CARD=B.HEATH_CARD
-where A.[STATUS]<>'§@¼o' and len(A.[bremark])=0
+where A.[STATUS]<>'ä½œå»¢' and len(A.[bremark])=0
 order by A.SDATE, A.bid
 
 select	*
@@ -85,9 +85,9 @@ order by left(SDATE,6), rid
 0301217	201902	2
 0400001	201904	3
 */
---¥ı¬İ¬İ¦³­ş¨ÇÄæ¦ì·|¦³ªÅ¥Õ
+--å…ˆçœ‹çœ‹æœ‰å“ªäº›æ¬„ä½æœƒæœ‰ç©ºç™½
 /*
-/****** SSMS ¤¤ SelectTopNRows ©R¥Oªº«ü¥O½X  ******/
+/****** SSMS ä¸­ SelectTopNRows å‘½ä»¤çš„æŒ‡ä»¤ç¢¼  ******/
 [VDATE]
 [DOCTNAME]
 [HEATH_CARD]
@@ -98,13 +98,13 @@ order by left(SDATE,6), rid
 [CASENO]
 [G]
 */
---¥ÎªÅ­È,0¨Ó¨ú¥NNULL¦ü¥G¤ñ¸ûÁo©ú
---±µ¤U¨Ó§äKEY­È,¤wª¾¶ÈYM, bid¬O¤£°÷ªº,¦³´XºØ¥i¯à
+--ç”¨ç©ºå€¼,0ä¾†å–ä»£NULLä¼¼ä¹æ¯”è¼ƒè°æ˜
+--æ¥ä¸‹ä¾†æ‰¾KEYå€¼,å·²çŸ¥åƒ…YM, bidæ˜¯ä¸å¤ çš„,æœ‰å¹¾ç¨®å¯èƒ½
 --YM+bid+uid
 --YM+bid+uid+sdate
 --YM+bid+sdate
 
---YM+bid+uid ÀË¬d«á³o­Ó²Õ¦X¬O¥i¥Hªº!!!!
+--YM+bid+uid æª¢æŸ¥å¾Œé€™å€‹çµ„åˆæ˜¯å¯ä»¥çš„!!!!
 select	rid, left(SDATE,6) as YM, uid, count(rid) as N
 from	bl.dbo.tbl_pijia
 group by rid, left(SDATE,6), uid
@@ -151,7 +151,7 @@ select	*
 from	al.dbo.tbl_pijia
 where	bid='0900220' and ym='10709'
 
---YM+bid+uid+sdate, µ²ªG®t¤£¦h,¨S¦³¤ñ¸û¦n
+--YM+bid+uid+sdate, çµæœå·®ä¸å¤š,æ²’æœ‰æ¯”è¼ƒå¥½
 select	rid, left(SDATE,6) as YM, uid, count(rid) as N
 from	bl.dbo.tbl_pijia
 group by rid, left(SDATE,6), uid
@@ -194,7 +194,7 @@ on A.rid=B.rid and left(A.SDATE,6)=B.YM and A.uid=B.uid and A.sdate=B.sdate
 where	B.rid is not null
 order by left(A.SDATE,6), A.rid
 
---YM+bid+sdate, it makes no sense, Âå¬İ´Nª¾¹D¤£¬O¦P¤@µ§
+--YM+bid+sdate, it makes no sense, é†«çœ‹å°±çŸ¥é“ä¸æ˜¯åŒä¸€ç­†
 select	distinct A.[rid]
       ,A.[op]
       ,A.[SDATE]

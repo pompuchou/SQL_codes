@@ -1,13 +1,13 @@
---20190612 created
---°£¥h¨S¦³¥Îªº00001, ³Ì¦nÃÒ©ú°T®§¨S¦³´î¤Ö, ³Ì¦n¤èªk¬OÂ²³æªº
+ï»¿--20190612 created
+--é™¤å»æ²’æœ‰ç”¨çš„00001, æœ€å¥½è­‰æ˜è¨Šæ¯æ²’æœ‰æ¸›å°‘, æœ€å¥½æ–¹æ³•æ˜¯ç°¡å–®çš„
 select	SDATE, uid, POSINAME, HEATH_CARD, count(bid) as N
 from	al.dbo.tbl_pijia
-where	STATUS not in ('§@¼o') and len(bremark)=0
+where	STATUS not in ('ä½œå»¢') and len(bremark)=0
 group by	SDATE, uid, POSINAME, HEATH_CARD
 having count(bid)>1
 
---SDATE, uid, POSINAME, HEATH_CARD¥i¥H°ß¤@
---407 µ§
+--SDATE, uid, POSINAME, HEATH_CARDå¯ä»¥å”¯ä¸€
+--407 ç­†
 select	A.CASENO 
 		,A.Pijia
 		,B.CASENO
@@ -16,7 +16,7 @@ from	al.dbo.tbl_opd as A
 		left outer join
 		(select * from
 		al.dbo.tbl_pijia
-		where STATUS not in ('§@¼o') and len(bremark)=0
+		where STATUS not in ('ä½œå»¢') and len(bremark)=0
 		) as B
 		on A.SDATE=B.SDATE and A.uid=B.uid and A.POSINAME=B.POSINAME and A.HEATH_CARD=B.HEATH_CARD  
 where	A.SDATE between '20170201' and '20170228' and B.bid is not null
@@ -24,24 +24,24 @@ where	A.SDATE between '20170201' and '20170228' and B.bid is not null
 
 
 
-select	A.*, B.CASENO, CASE WHEN LEFT(A.remark,2) in ('¤è¦à','¥Ñ®Ú','¬K·u','­»¶é','±Ò´¼','²»¨|','´º¤¯','¸t·R','®ç¶é','¸Û«H', 'Æ[­µ') THEN 1 END
+select	A.*, B.CASENO, CASE WHEN LEFT(A.remark,2) in ('æ–¹èˆŸ','ç”±æ ¹','æ˜¥æš‰','é¦™åœ’','å•Ÿæ™º','ç¥¥è‚²','æ™¯ä»','è–æ„›','æ¡ƒåœ’','èª ä¿¡', 'è§€éŸ³') THEN 1 END
 from	al.dbo.tbl_pijia as A
 		left outer join
 		al.dbo.tbl_opd as B
 		on A.SDATE=B.SDATE and A.uid=B.uid and A.POSINAME=B.POSINAME and A.HEATH_CARD=B.HEATH_CARD
-where A.CASENO is null and A.STATUS not in ('§@¼o','°h¨R') and len(A.bremark)=0
+where A.CASENO is null and A.STATUS not in ('ä½œå»¢','é€€æ²–') and len(A.bremark)=0
 
---²Ä¤@¨B,±NPijia°t¤WCASENO,³o¤@¨BÆJPijia¥²¥i°t¤W¤@­ÓCASENO,¦ı¥i¯à¦h­ÓPIJIA¹ï¤@­ÓCASENO
+--ç¬¬ä¸€æ­¥,å°‡Pijiaé…ä¸ŠCASENO,é€™ä¸€æ­¥é©ŸPijiaå¿…å¯é…ä¸Šä¸€å€‹CASENO,ä½†å¯èƒ½å¤šå€‹PIJIAå°ä¸€å€‹CASENO
 update	al.dbo.tbl_pijia
-set	CASENO=B.CASENO, G=CASE WHEN LEFT(A.remark,2) in ('¤è¦à','¥Ñ®Ú','¬K·u','­»¶é','±Ò´¼','²»¨|','´º¤¯','¸t·R','®ç¶é','¸Û«H', 'Æ[­µ') THEN 1 END
+set	CASENO=B.CASENO, G=CASE WHEN LEFT(A.remark,2) in ('æ–¹èˆŸ','ç”±æ ¹','æ˜¥æš‰','é¦™åœ’','å•Ÿæ™º','ç¥¥è‚²','æ™¯ä»','è–æ„›','æ¡ƒåœ’','èª ä¿¡', 'è§€éŸ³') THEN 1 END
 from	al.dbo.tbl_pijia as A
 		left outer join
 		al.dbo.tbl_opd as B
 		on A.SDATE=B.SDATE and A.uid=B.uid and A.VIST=B.VIST and A.RMNO=B.RMNO and A.POSINAME=B.POSINAME and A.HEATH_CARD=B.HEATH_CARD
-where A.CASENO is null and A.STATUS not in ('§@¼o','°h¨R') and len(A.bremark)=0
+where A.CASENO is null and A.STATUS not in ('ä½œå»¢','é€€æ²–') and len(A.bremark)=0
 
---²Ä¤G¨B¤§¤@,½T»{opdªºCASENO¬O1to1°tpijia,­Y¬O´N§¹¦¨°t¹ï,­Y¤£¬O´N¶Ç¦^¿ù»~°T®§,¦³´Xµ§¿ù»~
---¯u¨S·Q¨ì¤@¤H¤@¤Ñ¨Ó¨â¦¸
+--ç¬¬äºŒæ­¥ä¹‹ä¸€,ç¢ºèªopdçš„CASENOæ˜¯1to1é…pijia,è‹¥æ˜¯å°±å®Œæˆé…å°,è‹¥ä¸æ˜¯å°±å‚³å›éŒ¯èª¤è¨Šæ¯,æœ‰å¹¾ç­†éŒ¯èª¤
+--çœŸæ²’æƒ³åˆ°ä¸€äººä¸€å¤©ä¾†å…©æ¬¡
 select	CASENO, bid, SDATE, VIST, RMNO, cname
 from	al.dbo.tbl_pijia
 where	CASENO in
@@ -51,7 +51,7 @@ where	CASENO is not null
 group by CASENO
 having count(bid)>1)
 
---²Ä¤G¨B¤§¤G,±Nopd°t¤WPijia
+--ç¬¬äºŒæ­¥ä¹‹äºŒ,å°‡opdé…ä¸ŠPijia
 update	al.dbo.tbl_opd
 set	Pijia=B.bid
 from	al.dbo.tbl_opd as A
@@ -74,22 +74,22 @@ from	al.dbo.tbl_pijia as A
 		left outer join
 		bl.dbo.tbl_pijia as B
 		on A.bid=B.rid and A.SDATE=B.SDATE and A.uid=B.uid and A.HEATH_CARD=B.HEATH_CARD 
-where	A.STATUS <>'§@¼o' and len(A.bremark)=0 and A.SDATE between '20170101' and '20170131'
+where	A.STATUS <>'ä½œå»¢' and len(A.bremark)=0 and A.SDATE between '20170101' and '20170131'
 
 
 
 
---²Ä¤@¨B¤â°Ê
---¦A¨Ó¬İ«ç»ò¦Û°Ê¤Æ
+--ç¬¬ä¸€æ­¥æ‰‹å‹•
+--å†ä¾†çœ‹æ€éº¼è‡ªå‹•åŒ–
 
 /*
-20170103	A121366540	°·«O	0001	3
-20170104	A120111336	°·«O	0003	3
-20170105	H120831303	°·«O	0002	3
-20170118	H122263214	°·«O	0001	3
-20170118	H224815601	°·«O	0003	3
-20170118	N203485910	°·«O	0001	3
-20170119	F222643856	°·«O	0004	2
+20170103	A121366540	å¥ä¿	0001	3
+20170104	A120111336	å¥ä¿	0003	3
+20170105	H120831303	å¥ä¿	0002	3
+20170118	H122263214	å¥ä¿	0001	3
+20170118	H224815601	å¥ä¿	0003	3
+20170118	N203485910	å¥ä¿	0001	3
+20170119	F222643856	å¥ä¿	0004	2
 */
 select	*
 from	al.dbo.tbl_pijia

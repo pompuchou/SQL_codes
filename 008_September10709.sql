@@ -1,13 +1,13 @@
-/*¤À²Õ°ò¥»¤W³¡¼vÅTÃÄª«
+ï»¿/*åˆ†çµ„åŸºæœ¬ä¸Šéƒ¨å½±éŸ¿è—¥ç‰©
 select	*
 from	al.dbo.tbl_pijia as A
 	left outer join
 		al.dbo.tbl_opd_order as B
 	on A.CASENO=B.CASENO
-where	G=0 and len(remark)>0 and POSINAME<>'¦Û¶O' and remark <>'®a¤H'
+where	G=0 and len(remark)>0 and POSINAME<>'è‡ªè²»' and remark <>'å®¶äºº'
 */
 --constructing
---¥ýºâ·í¤ë
+--å…ˆç®—ç•¶æœˆ
 declare	@t1 table (rid nvarchar(50), BILL_QTY float)
 declare	@t2 table (rid nvarchar(50), BILL_QTY float)
 declare	@t3 table (rid nvarchar(50), BILL_QTY float)
@@ -21,7 +21,7 @@ from	al.dbo.tbl_pijia as A
 	left outer join
 		al.dbo.tbl_opd_order as B
 	on A.CASENO=B.CASENO
-where	A.SDATE between '20180901' and '20180930' and A.G=1 and CLASS='ÃÄ«~'
+where	A.SDATE between '20180901' and '20180930' and A.G=1 and CLASS='è—¥å“'
 group by	B.rid
 
 insert into @t2
@@ -31,7 +31,7 @@ from	al.dbo.tbl_pijia as A
 	left outer join
 		al.dbo.tbl_opd_order as B
 	on A.CASENO=B.CASENO
-where	A.SDATE between '20180801' and '20180831' and A.G=1 and CLASS='ÃÄ«~' and CHRONIC=2
+where	A.SDATE between '20180801' and '20180831' and A.G=1 and CLASS='è—¥å“' and CHRONIC=2
 group by	B.rid
 
 
@@ -42,10 +42,10 @@ from	al.dbo.tbl_pijia as A
 	left outer join
 		al.dbo.tbl_opd_order as B
 	on A.CASENO=B.CASENO
-where	A.SDATE between '20180701' and '20180731' and A.G=1 and CLASS='ÃÄ«~' and CHRONIC=3
+where	A.SDATE between '20180701' and '20180731' and A.G=1 and CLASS='è—¥å“' and CHRONIC=3
 group by	B.rid
 
---¥Ht1¬°¥D
+--ä»¥t1ç‚ºä¸»
 insert into @tt
 select	A.rid, A.BILL_QTY+ISNULL(B.BILL_QTY,0)+ISNULL(C.BILL_QTY,0)
 from	@t1 as A
@@ -90,7 +90,7 @@ from	@tt as A
 	on A.rid=B.rid
 order by B.r04
 /*
---¥þ³¡
+--å…¨éƒ¨
 select	*
 from	@u as A
 	left outer join
@@ -104,7 +104,7 @@ from	[10709]
 where	r04 not in (select r04 from @u)
 
 
---¤@­Pªº
+--ä¸€è‡´çš„
 select	*
 from	@u as A
 	left outer join
@@ -113,7 +113,7 @@ from	@u as A
 where	B.r04 is not null and A.BILL_QTY=B.[ N ]
 order by A.r04
 
---¤£¤@­Pªº 
+--ä¸ä¸€è‡´çš„ 
 select	*
 from	@u as A
 	left outer join
@@ -125,13 +125,13 @@ order by A.r04
 /*
 AC41280100	KINXETIN CAPSULES 20MG "KINGDOM"(FLUOXETINE)	280			
 AC41338100	JUXAC CAP.20MG	842	
-=>AC41338100	Juxac Cap 20mg ¸ÑÆ{(°·³ì«H¤¸)	1122
+=>AC41338100	Juxac Cap 20mg è§£é¬±(å¥å–¬ä¿¡å…ƒ)	1122
 
-BC23695421	ALPHAGAN P OPHTHALMIC SOLUTION 0.15%	1 ¨S¶}
-BC23337421	COSOPT OPHTHALMIC SOLUTION	1 §R¤@²~
+BC23695421	ALPHAGAN P OPHTHALMIC SOLUTION 0.15%	1 æ²’é–‹
+BC23337421	COSOPT OPHTHALMIC SOLUTION	1 åˆªä¸€ç“¶
 
 BC18952100	PK-MERZ FILM-COATED TABLETS	56
-=>AC39431100	Dopadine FC Tab 100mg¦h¤Ú©w(·ç	56
+=>AC39431100	Dopadine FC Tab 100mgå¤šå·´å®š(ç‘ž	56
 
 
 

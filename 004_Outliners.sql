@@ -1,21 +1,21 @@
---outliner
---¨S¤À¨ì§å»ù³æªº 15µ§(20170301~20190228)
+ï»¿--outliner
+--æ²’åˆ†åˆ°æ‰¹åƒ¹å–®çš„ 15ç­†(20170301~20190228)
 select	*
 from	[AL].[dbo].[tbl_opd]
 where [Pijia] is NULL and SDATE>'20170228'
 order by SDATE
 
 --update al.dbo.tbl_opd
-set posiname='°·«O'
+set posiname='å¥ä¿'
 where caseno='AC180831502005'
 
 
---20170705 ¾G°·¤¤ ¥¼§å»ù
---20170713 ³¯«H¤å ¥¼§å»ù
---20170713 ³¯­S¬K¬ü ¥¼§å»ù
+--20170705 é„­å¥ä¸­ æœªæ‰¹åƒ¹
+--20170713 é™³ä¿¡æ–‡ æœªæ‰¹åƒ¹
+--20170713 é™³èŒƒæ˜¥ç¾ æœªæ‰¹åƒ¹
 --solution
 
---CASENO¦³­«½ÆªÌ188¥ó
+--CASENOæœ‰é‡è¤‡è€…188ä»¶
 select	*
 from	al.dbo.tbl_pijia
 where CASENO in
@@ -40,8 +40,8 @@ from	[AL].[dbo].[tbl_pijia] as A
 		on A.[SDATE]=B.[SDATE] and A.[VIST]=B.[VIST] and A.RMNO=B.[RMNO] and A.uid=B.[uid] and A.POSINAME=B.POSINAME
 where	B.CASENO is not null and A.CASENO is null
 
---CASENO¦³­«½ÆªÌ188¥ó
---±Æ°£§Ñ¤F°Ï§O¨­¤Àªº³Ñ12µ§,5¤H
+--CASENOæœ‰é‡è¤‡è€…188ä»¶
+--æ’é™¤å¿˜äº†å€åˆ¥èº«åˆ†çš„å‰©12ç­†,5äºº
 select	*
 from	al.dbo.tbl_pijia
 where CASENO in
@@ -51,18 +51,18 @@ group by CASENO
 having  count(SDATE)>1)
 order by CASENO
 
---1 §d¹Å´f §R±¼¤@µ§
+--1 å³å˜‰æƒ  åˆªæ‰ä¸€ç­†
 select	*
 --delete
 from	al.dbo.tbl_pijia
 where rid='0100001' and CASENO='AC170119101088'
 
---2 ¼B¾ğ¸Û §R±¼¤@µ§
+--2 åŠ‰æ¨¹èª  åˆªæ‰ä¸€ç­†
 --delete
 from	al.dbo.tbl_pijia
 where rid='0300741' and CASENO='AC170322101037'
 
---3 ÁÂ¬KÄõ §R°£¨âµ§
+--3 è¬æ˜¥è˜­ åˆªé™¤å…©ç­†
 --delete
 from	al.dbo.tbl_pijia
 where rid='0301017' and CASENO='AC170412302001'
@@ -70,7 +70,7 @@ where rid='0301017' and CASENO='AC170412302001'
 from	al.dbo.tbl_pijia
 where rid='0500614' and CASENO='AC170412302001'
 
---4 ¹ù«´µo ­×§ï µM«á§R°£¨âµ§
+--4 å»–å¥‘ç™¼ ä¿®æ”¹ ç„¶å¾Œåˆªé™¤å…©ç­†
 --update	al.dbo.tbl_pijia
 set	AMTreceived=910
 where rid='1000954' and CASENO='AC171023102004'
@@ -81,7 +81,7 @@ where rid='1100786' and CASENO='AC171023102004'
 from	al.dbo.tbl_pijia
 where rid='1001327' and CASENO='AC171023102004'
 
---5 ±iªN ­×§ïµM«á§R°£¤@µ§
+--5 å¼µæ° ä¿®æ”¹ç„¶å¾Œåˆªé™¤ä¸€ç­†
 --update	al.dbo.tbl_pijia
 set	AMTreceived=110
 where rid='0600967' and CASENO='AC180621502004'
@@ -90,5 +90,5 @@ where rid='0600967' and CASENO='AC180621502004'
 from	al.dbo.tbl_pijia
 where rid='0700021' and CASENO='AC180621502004'
 
---20190317 ¤â°Ê½Õ¾ã«á¨S¦³­«½Æªº¤F
+--20190317 æ‰‹å‹•èª¿æ•´å¾Œæ²’æœ‰é‡è¤‡çš„äº†
 

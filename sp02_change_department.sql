@@ -1,6 +1,6 @@
-USE [AL]
+ÔªøUSE [AL]
 GO
-/****** Object:  StoredProcedure [dbo].[sp_get_hdata]    Script Date: 2019/6/7 §U§» 08:53:32 ******/
+/****** Object:  StoredProcedure [dbo].[sp_get_hdata]    Script Date: 2019/6/7 ‰∏ãÂçà 08:53:32 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -21,7 +21,7 @@ insert into @output
 select	'20'+right([CASENO],12)+'01' as output
 from	[AL].[dbo].[tbl_opd]
 where	SDATE between @begin_date and @end_date
-	and [DEPTNAME]='∫ÎØ´¨Ï' and [POSINAME] <> '¶€∂O' and [ICDCODE1] not in (select icd9_code from al.dbo.p_icd9 where psy=1)
+	and [DEPTNAME]='Á≤æÁ•ûÁßë' and [POSINAME] <> 'Ëá™Ë≤ª' and [ICDCODE1] not in (select icd9_code from al.dbo.p_icd9 where psy=1)
 
 
 --should be in psychiatry
@@ -32,14 +32,14 @@ from	[AL].[dbo].[tbl_opd] as A
 		[AL].[dbo].[tbl_opd_order] as B
 		on A.[CASENO]=B.[CASENO]
 where	A.SDATE between @begin_date and @end_date
-	and A.[DEPTNAME]<>'∫ÎØ´¨Ï' and A.[POSINAME] <> '¶€∂O' and B.[rid] in ('45046','45087','45102','45010')
+	and A.[DEPTNAME]<>'Á≤æÁ•ûÁßë' and A.[POSINAME] <> 'Ëá™Ë≤ª' and B.[rid] in ('45046','45087','45102','45010')
 
 --should be in psychiatry
 insert into @output
 select	'20'+right([CASENO],12)+'13' as output
 from	[AL].[dbo].[tbl_opd]
 where	SDATE between @begin_date and @end_date
-	and [DEPTNAME]<>'∫ÎØ´¨Ï' and [POSINAME] <> '¶€∂O' and [ICDCODE1] in (select icd9_code from al.dbo.p_icd9 where psy=1)
+	and [DEPTNAME]<>'Á≤æÁ•ûÁßë' and [POSINAME] <> 'Ëá™Ë≤ª' and [ICDCODE1] in (select icd9_code from al.dbo.p_icd9 where psy=1)
 
 select	*
 from	@output

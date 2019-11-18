@@ -1,4 +1,4 @@
---­º¥ı¨Ó¬İ¶E¹î¶O,¶E¹î¶OÀ³¸Ó¦³¥|­Ó°·«O½X,'00182C','00184C' ºë¯«¬ìºCºà,'01031','01031C','01032C' ºë¯«¬ì¤@¯ëºà,'00158C' ¤@¯ë¬ìºCºà, '00109C','00110C' ¤@¯ë¬ì¤@¯ëºà
+ï»¿--é¦–å…ˆä¾†çœ‹è¨ºå¯Ÿè²»,è¨ºå¯Ÿè²»æ‡‰è©²æœ‰å››å€‹å¥ä¿ç¢¼,'00182C','00184C' ç²¾ç¥ç§‘æ…¢ç®‹,'01031','01031C','01032C' ç²¾ç¥ç§‘ä¸€èˆ¬ç®‹,'00158C' ä¸€èˆ¬ç§‘æ…¢ç®‹, '00109C','00110C' ä¸€èˆ¬ç§‘ä¸€èˆ¬ç®‹
 /*
 select	rid,
 		count(CASENO) as N
@@ -18,7 +18,7 @@ from	[al].[dbo].[tbl_opd_order] as A
 	where	A.rid in ('00109C','00110C','00158C','00182C','00184C','01031','01031C','01032C','45046','45102','45010','45087')
 		and A.SDATE between '20170301' and '20190430'
 
---¶E¹î¶O
+--è¨ºå¯Ÿè²»
 select	sum(convert(float,AMT)) as AMT
 from	[al].[dbo].[tbl_opd_order] as A
 	left outer join
@@ -27,7 +27,7 @@ from	[al].[dbo].[tbl_opd_order] as A
 	where	A.rid in ('00109C','00110C','00158C','00182C','00184C','01031','01031C','01032C')
 		and A.SDATE between '20170101' and '20190430'
 
---¶EÀø¶O
+--è¨ºç™‚è²»
 select	sum(convert(float,AMT)) as AMT
 from	[al].[dbo].[tbl_opd_order] as A
 	left outer join
@@ -36,13 +36,13 @@ from	[al].[dbo].[tbl_opd_order] as A
 	where	A.rid in ('45046','45102','45010','45087')
 		and A.SDATE between '20170301' and '20190430'
 
---ÀËÅç¶O
+--æª¢é©—è²»
 select	sum(convert(float,AMT)) as AMT
 from	[al].[dbo].[tbl_opd_order] as A
 	left outer join
 		[al].[dbo].[tbl_opd] as B
 	on	A.[CASENO]=B.[CASENO]
-	where	A.CLASS = 'ÀËÅç'
+	where	A.CLASS = 'æª¢é©—'
 		and A.SDATE between '20170301' and '20190430'
 
 --YM
@@ -52,7 +52,7 @@ from	[al].[dbo].[tbl_opd_order] as A
 select	DATEADD(MONTH, DATEDIFF(MONTH, 0, SDATE), 0) AS [YM]
 from	[al].[dbo].[tbl_opd_order] as A
 
---¶E¹î¶O
+--è¨ºå¯Ÿè²»
 select	DATEADD(MONTH, DATEDIFF(MONTH, 0, A.SDATE), 0) AS [YM]
 		, sum(convert(float,AMT)) as AMT
 from	[al].[dbo].[tbl_opd_order] as A
@@ -64,7 +64,7 @@ from	[al].[dbo].[tbl_opd_order] as A
 group by	DATEADD(MONTH, DATEDIFF(MONTH, 0, A.SDATE), 0)
 order by	DATEADD(MONTH, DATEDIFF(MONTH, 0, A.SDATE), 0)
 
---¶EÀø¶O
+--è¨ºç™‚è²»
 select	DATEADD(MONTH, DATEDIFF(MONTH, 0, A.SDATE), 0) AS [YM]
 		, sum(convert(float,AMT)) as AMT
 from	[al].[dbo].[tbl_opd_order] as A
@@ -76,19 +76,19 @@ from	[al].[dbo].[tbl_opd_order] as A
 group by	DATEADD(MONTH, DATEDIFF(MONTH, 0, A.SDATE), 0)
 order by	DATEADD(MONTH, DATEDIFF(MONTH, 0, A.SDATE), 0)
 
---ÀËÅç¶O
+--æª¢é©—è²»
 select	DATEADD(MONTH, DATEDIFF(MONTH, 0, A.SDATE), 0) AS [YM]
 		, sum(convert(float,AMT)) as AMT
 from	[al].[dbo].[tbl_opd_order] as A
 	left outer join
 		[al].[dbo].[tbl_opd] as B
 	on	A.[CASENO]=B.[CASENO]
-	where	A.CLASS = 'ÀËÅç'
+	where	A.CLASS = 'æª¢é©—'
 		and A.SDATE between '20170301' and '20190430'
 group by	DATEADD(MONTH, DATEDIFF(MONTH, 0, A.SDATE), 0)
 order by	DATEADD(MONTH, DATEDIFF(MONTH, 0, A.SDATE), 0)
 
---°Ï¤À¶E©Ò,±M®×
+--å€åˆ†è¨ºæ‰€,å°ˆæ¡ˆ
 declare	@t1 table(YM date, N int, amt float) 
 declare	@t2 table(YM date, N int, amt float) 
 declare	@t3 table(YM date, amt float) 
@@ -96,8 +96,8 @@ declare	@t4 table(YM date, amt float)
 declare	@t5 table(YM date, amt float) 
 declare	@t6 table(YM date, amt float) 
 
---¶E¹î¶O
---@t1 ±M®×¶E¹î¶O
+--è¨ºå¯Ÿè²»
+--@t1 å°ˆæ¡ˆè¨ºå¯Ÿè²»
 insert into @t1
 select	DATEADD(MONTH, DATEDIFF(MONTH, 0, A.SDATE), 0) AS [YM]
 		,count(A.CASENO) as N
@@ -107,7 +107,7 @@ from	[al].[dbo].[tbl_opd_order] as A
 		[al].[dbo].[tbl_pijia] as B
 	on	A.[CASENO]=B.[CASENO]
 	where	A.rid in ('00109C','00110C','00158C','00182C','00184C','01031','01031C','01032C')
-		and B.[Youmian] in ('¾÷ºc','¾÷­«','¾÷ºa','¾÷ºÖ')
+		and B.[Youmian] in ('æ©Ÿæ§‹','æ©Ÿé‡','æ©Ÿæ¦®','æ©Ÿç¦')
 		and A.SDATE between '20170301' and '20190430'
 group by	DATEADD(MONTH, DATEDIFF(MONTH, 0, A.SDATE), 0)
 order by	DATEADD(MONTH, DATEDIFF(MONTH, 0, A.SDATE), 0)
@@ -121,12 +121,12 @@ from	[al].[dbo].[tbl_opd_order] as A
 		[al].[dbo].[tbl_pijia] as B
 	on	A.[CASENO]=B.[CASENO]
 	where	A.rid in ('00109C','00110C','00158C','00182C','00184C','01031','01031C','01032C')
-		and B.[Youmian] not in ('¾÷ºc','¾÷­«','¾÷ºa','¾÷ºÖ')
+		and B.[Youmian] not in ('æ©Ÿæ§‹','æ©Ÿé‡','æ©Ÿæ¦®','æ©Ÿç¦')
 		and A.SDATE between '20170101' and '20190430'
 group by	DATEADD(MONTH, DATEDIFF(MONTH, 0, A.SDATE), 0)
 order by	DATEADD(MONTH, DATEDIFF(MONTH, 0, A.SDATE), 0)
 
---¶EÀø¶O
+--è¨ºç™‚è²»
 insert into @t3
 select	DATEADD(MONTH, DATEDIFF(MONTH, 0, A.SDATE), 0) AS [YM]
 		, sum(convert(float,AMT)) as AMT
@@ -136,7 +136,7 @@ from	[al].[dbo].[tbl_opd_order] as A
 	on	A.[CASENO]=B.[CASENO]
 	where	A.rid in ('45046','45102','45010','45087')
 		and A.SDATE between '20170301' and '20190430'
-		and B.[Youmian] in ('¾÷ºc','¾÷­«','¾÷ºa','¾÷ºÖ')
+		and B.[Youmian] in ('æ©Ÿæ§‹','æ©Ÿé‡','æ©Ÿæ¦®','æ©Ÿç¦')
 group by	DATEADD(MONTH, DATEDIFF(MONTH, 0, A.SDATE), 0)
 order by	DATEADD(MONTH, DATEDIFF(MONTH, 0, A.SDATE), 0)
 
@@ -149,11 +149,11 @@ from	[al].[dbo].[tbl_opd_order] as A
 	on	A.[CASENO]=B.[CASENO]
 	where	A.rid in ('45046','45102','45010','45087')
 		and A.SDATE between '20170301' and '20190430'
-		and B.[Youmian] not in ('¾÷ºc','¾÷­«','¾÷ºa','¾÷ºÖ')
+		and B.[Youmian] not in ('æ©Ÿæ§‹','æ©Ÿé‡','æ©Ÿæ¦®','æ©Ÿç¦')
 group by	DATEADD(MONTH, DATEDIFF(MONTH, 0, A.SDATE), 0)
 order by	DATEADD(MONTH, DATEDIFF(MONTH, 0, A.SDATE), 0)
 
---ÀËÅç¶O
+--æª¢é©—è²»
 insert into @t5
 select	DATEADD(MONTH, DATEDIFF(MONTH, 0, A.SDATE), 0) AS [YM]
 		, sum(convert(float,AMT)) as AMT
@@ -161,9 +161,9 @@ from	[al].[dbo].[tbl_opd_order] as A
 	left outer join
 		[al].[dbo].[tbl_pijia] as B
 	on	A.[CASENO]=B.[CASENO]
-	where	A.CLASS = 'ÀËÅç'
+	where	A.CLASS = 'æª¢é©—'
 		and A.SDATE between '20170301' and '20190430'
-		and B.[Youmian] in ('¾÷ºc','¾÷­«','¾÷ºa','¾÷ºÖ')
+		and B.[Youmian] in ('æ©Ÿæ§‹','æ©Ÿé‡','æ©Ÿæ¦®','æ©Ÿç¦')
 group by	DATEADD(MONTH, DATEDIFF(MONTH, 0, A.SDATE), 0)
 order by	DATEADD(MONTH, DATEDIFF(MONTH, 0, A.SDATE), 0)
 
@@ -174,9 +174,9 @@ from	[al].[dbo].[tbl_opd_order] as A
 	left outer join
 		[al].[dbo].[tbl_pijia] as B
 	on	A.[CASENO]=B.[CASENO]
-	where	A.CLASS = 'ÀËÅç'
+	where	A.CLASS = 'æª¢é©—'
 		and A.SDATE between '20170301' and '20190430'
-		and B.[Youmian] not in ('¾÷ºc','¾÷­«','¾÷ºa','¾÷ºÖ')
+		and B.[Youmian] not in ('æ©Ÿæ§‹','æ©Ÿé‡','æ©Ÿæ¦®','æ©Ÿç¦')
 group by	DATEADD(MONTH, DATEDIFF(MONTH, 0, A.SDATE), 0)
 order by	DATEADD(MONTH, DATEDIFF(MONTH, 0, A.SDATE), 0)
 

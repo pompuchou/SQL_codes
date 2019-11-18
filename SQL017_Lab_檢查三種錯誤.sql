@@ -1,5 +1,5 @@
---�ˬd�T�ؿ��~����
---1. �P�@��O�Q���ƥs��
+﻿--檢查三種錯誤情形
+--1. 同一醫令被重複叫用
 /*
 SELECT [uid]
       ,[iid]
@@ -14,13 +14,13 @@ group by	[uid]
       ,[OD_idx]
 having	count(iid)>1
 */
---2. ����PCASE���@�P
+--2. 日期與CASE不一致
 /*
 select	*
 from	al.dbo.tbl_opd_order
 where	SDATE<>'20'+substring(CASENO,3,6)
 */
---3. �P�@lid���ӳ��O�P�@CASENO
+--3. 同一lid應該都是同一CASENO
 /*
 select	A.lid, count(A.CASENO) as N
 from (select	lid, CASENO
@@ -58,19 +58,19 @@ where lid in ('01070628000124') and iid not in ('CBC-DC')
 --set	CASENO=NULL, OD_idx=NULL
 --where lid in ('01070608000022')
 /*
---�o�ǽT�{�u���O�P�@�i����u��Ӧۤ��P�B��,��]�O�t�R�оi�|2018/6/6���Ӯפ��P��(2018/5/9)�B��,���ɬƦܸ��,������O�P�@�Ѱe��,�ɨȤ����D�ҥH�N�X�֤@�i�u��F
+--這些確認真的是同一張檢驗工單來自不同處方,原因是聖愛教養院2018/6/6的個案不同天(2018/5/9)處方,有時甚至跨月,但檢體是同一天送的,賽亞不知道所以就合併一張工單了
 select	*
 from al.dbo.tbl_lab_record
 where lid in ('01070118000148','01070608000019','01070608000022','01070608000031','01070608000036','01080508000224','01070628000124')
 */
 /*
---�o�ǽT�{�u���O�P�@�i����u��Ӧۤ��P�B��,��]�O�P�@�Ѧ��۶O,���O�E���O�}�߳B��,�ɨȤ����D�ҥH�N�X�֤@�i�u��F
+--這些確認真的是同一張檢驗工單來自不同處方,原因是同一天有自費,健保診分別開立處方,賽亞不知道所以就合併一張工單了
 select	*
 from al.dbo.tbl_lab_record
 where lid in ('01070129000022','01070702000066','01070913000051','01080420000102','01070623000118')
 */
---�ĥ|�ؿ��~,�ѩ��ʤF��Ʈw,OD_idx�i��|����
---�̫�A�@�_��
+--第四種錯誤,由於更動了資料庫,OD_idx可能會改變
+--最後再一起看
 /*
 declare @t_lab table(lid nvarchar(50), caseno nvarchar(50), od_idx nvarchar(50), nhi_code nvarchar(50))
 declare @t_ord table(lid nvarchar(50), caseno nvarchar(50), od_idx nvarchar(50), rid nvarchar(50))
@@ -96,7 +96,7 @@ left outer join
 where	B.lid is not null
 group by B.lid, A.CASENO, A.OD_idx, A.rid
 
---�blab,���border
+--在lab,不在order
 select	A.*, B.*
 from	@t_lab as A
 	left outer join
@@ -194,7 +194,7 @@ and A.CASENO is NULL and A.od_idx is null and A.iid not in ('CBC-DC','URT','P1-B
 --from	al.dbo.tbl_opd_order
 --where	caseno='AC180309302006'
 
---�Ĥ��ؿ��~, �ˬdal.dbo.tbl_opd_order, �]������ʴ��J,����w�g�ˬd�L�F, �����Ҧr���٨S�ˬd
+--第五種錯誤, 檢查al.dbo.tbl_opd_order, 因為有手動插入,日期已經檢查過了, 身分證字號還沒檢查
 
 select	A.caseno, count(A.uid) as N
 from
@@ -204,4 +204,4 @@ group by caseno, uid) as A
 group by A.caseno
 having count(A.uid)>1
 
---����,�S���D!!!
+--完成,沒問題!!!

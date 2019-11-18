@@ -1,13 +1,13 @@
-/*¤À²Õ°ò¥»¤W³¡¼vÅTÃÄª«
+ï»¿/*åˆ†çµ„åŸºæœ¬ä¸Šéƒ¨å½±éŸ¿è—¥ç‰©
 select	*
 from	al.dbo.tbl_pijia as A
 	left outer join
 		al.dbo.tbl_opd_order as B
 	on A.CASENO=B.CASENO
-where	G=0 and len(remark)>0 and POSINAME<>'¦Û¶O' and remark <>'®a¤H'
+where	G=0 and len(remark)>0 and POSINAME<>'è‡ªè²»' and remark <>'å®¶äºº'
 */
 --constructing
---¥ıºâ·í¤ë
+--å…ˆç®—ç•¶æœˆ
 declare	@t1 table (rid nvarchar(50), BILL_QTY float)
 declare	@t2 table (rid nvarchar(50), BILL_QTY float)
 declare	@t3 table (rid nvarchar(50), BILL_QTY float)
@@ -21,8 +21,8 @@ from	al.dbo.tbl_pijia as A
 	left outer join
 		al.dbo.tbl_opd_order as B
 	on A.CASENO=B.CASENO
---where	A.SDATE between '20180901' and '20180930' and A.G=1 and CLASS='ÃÄ«~' and A.remark <> '¥@¬ü' and A.CASENO not in ('AC180918101028','AC180918101039','AC180927101043','AC180927101026','AC180927101011','AC180927101027')
-where	A.SDATE between '20180901' and '20180930' and A.G=1 and CLASS='ÃÄ«~' and A.remark <> '¥@¬ü'
+--where	A.SDATE between '20180901' and '20180930' and A.G=1 and CLASS='è—¥å“' and A.remark <> 'ä¸–ç¾' and A.CASENO not in ('AC180918101028','AC180918101039','AC180927101043','AC180927101026','AC180927101011','AC180927101027')
+where	A.SDATE between '20180901' and '20180930' and A.G=1 and CLASS='è—¥å“' and A.remark <> 'ä¸–ç¾'
 group by	B.rid
 
 insert into @t2
@@ -32,8 +32,8 @@ from	al.dbo.tbl_pijia as A
 	left outer join
 		al.dbo.tbl_opd_order as B
 	on A.CASENO=B.CASENO
---where	A.SDATE between '20180901' and '20180930' and A.G=1 and CLASS='ÃÄ«~' and A.remark <> '¥@¬ü' and A.CASENO not in ('AC180918101028','AC180918101039','AC180927101043','AC180927101026','AC180927101011','AC180927101027')
-where	A.SDATE between '20180801' and '20180831' and A.G=1 and CLASS='ÃÄ«~' and CHRONIC=2 and A.remark <> '¥@¬ü'
+--where	A.SDATE between '20180901' and '20180930' and A.G=1 and CLASS='è—¥å“' and A.remark <> 'ä¸–ç¾' and A.CASENO not in ('AC180918101028','AC180918101039','AC180927101043','AC180927101026','AC180927101011','AC180927101027')
+where	A.SDATE between '20180801' and '20180831' and A.G=1 and CLASS='è—¥å“' and CHRONIC=2 and A.remark <> 'ä¸–ç¾'
 group by	B.rid
 
 
@@ -44,11 +44,11 @@ from	al.dbo.tbl_pijia as A
 	left outer join
 		al.dbo.tbl_opd_order as B
 	on A.CASENO=B.CASENO
---where	A.SDATE between '20180701' and '20180731' and A.G=1 and CLASS='ÃÄ«~' and CHRONIC=3 and A.remark <> '¥@¬ü' and A.CASENO not in ('AC180918101028','AC180918101039','AC180927101043','AC180927101026','AC180927101011','AC180927101027')
-where	A.SDATE between '20180701' and '20180731' and A.G=1 and CLASS='ÃÄ«~' and CHRONIC=3 and A.remark <> '¥@¬ü'
+--where	A.SDATE between '20180701' and '20180731' and A.G=1 and CLASS='è—¥å“' and CHRONIC=3 and A.remark <> 'ä¸–ç¾' and A.CASENO not in ('AC180918101028','AC180918101039','AC180927101043','AC180927101026','AC180927101011','AC180927101027')
+where	A.SDATE between '20180701' and '20180731' and A.G=1 and CLASS='è—¥å“' and CHRONIC=3 and A.remark <> 'ä¸–ç¾'
 group by	B.rid
 
---¥Ht1¬°¥D
+--ä»¥t1ç‚ºä¸»
 insert into @tt
 select	A.rid, A.BILL_QTY+ISNULL(B.BILL_QTY,0)+ISNULL(C.BILL_QTY,0)
 from	@t1 as A
@@ -93,7 +93,7 @@ from	@tt as A
 	on A.rid=B.rid
 order by B.r04
 /*
---¥ş³¡
+--å…¨éƒ¨
 select	*
 from	@u as A
 	left outer join
@@ -101,7 +101,7 @@ from	@u as A
 	on A.r04=B.r04
 order by A.r04
 */
---¤@­Pªº
+--ä¸€è‡´çš„
 select	*
 from	@u as A
 	left outer join
@@ -110,7 +110,7 @@ from	@u as A
 where	B.r04 is not null and A.BILL_QTY=B.[ N ]
 order by A.r04
 
---¤£¤@­Pªº 
+--ä¸ä¸€è‡´çš„ 
 select	*
 from	@u as A
 	left outer join
@@ -121,32 +121,32 @@ order by A.r04
 /*
 AC26976100	DOGMATYL FILM COATED TABLETS 200MG (SULPIRIDE)	28
 AC28078100	SULPIN F.C. TABLETS 200MG "S.T." (SULPIRIDE)	716
-=>AC28078100	Sulpin FC Tab 200mgµÎ´_¹ç(«HªF	688
+=>AC28078100	Sulpin FC Tab 200mgèˆ’å¾©å¯§(ä¿¡æ±	688
 AC41280100	KINXETIN CAPSULES 20MG "KINGDOM"(FLUOXETINE)	280
 AC41338100	JUXAC CAP.20MG	842
-=>AC41338100	Juxac Cap 20mg ¸ÑÆ{(°·³ì«H¤¸)	1122
+=>AC41338100	Juxac Cap 20mg è§£é¬±(å¥å–¬ä¿¡å…ƒ)	1122
 BC23711100	DOXABEN XL TABLETS 4MG	56
-=>AA49920100	Xadosin SRFC Tab 4mgÂÄ¦h¤ß(¤¤	56
-BC23695421	ALPHAGAN P OPHTHALMIC SOLUTION 0.15% ¦n¹³¤£¥Î½Õ¾¯
-BC23337421	COSOPT OPHTHALMIC SOLUTION	1 ¦³¤@Åø¤£­p»ù
+=>AA49920100	Xadosin SRFC Tab 4mgè–©å¤šå¿ƒ(ä¸­	56
+BC23695421	ALPHAGAN P OPHTHALMIC SOLUTION 0.15% å¥½åƒä¸ç”¨èª¿åŠ‘
+BC23337421	COSOPT OPHTHALMIC SOLUTION	1 æœ‰ä¸€ç½ä¸è¨ˆåƒ¹
 
 AC49373100	PEDEN RETARD TABLETS 4 MG	630
-AC49373100	©¬µnªø®Ä¿õ 4 ²@§J	56
-=>AC49373100	Peden Retard Tab 4mg©¬µn(¤­¬w)	686
+AC49373100	å¸•ç™»é•·æ•ˆéŒ  4 æ¯«å…‹	56
+=>AC49373100	Peden Retard Tab 4mgå¸•ç™»(äº”æ´²)	686
 
-AC361511G0	MUBROXOL TABLETS 30MG (AMBROXOL) "C.C.P.C"  (¾Tºä/½¦ºä)	183
-=>AC361511G0	Mubroxol Tab 30mg ¥­·ğ®§[¤¤¤Æ]	163   
-  AC36151100	Mubroxol Tab 30mg ¥­·ğ®§(¤¤¤Æ)	20
+AC361511G0	MUBROXOL TABLETS 30MG (AMBROXOL) "C.C.P.C"  (é‹ç®”/è† ç®”)	183
+=>AC361511G0	Mubroxol Tab 30mg å¹³ç—°æ¯[ä¸­åŒ–]	163   
+  AC36151100	Mubroxol Tab 30mg å¹³ç—°æ¯(ä¸­åŒ–)	20
 
 
 
 */
 /*
-BC23695421	ALPHAGAN P OPHTHALMIC SOLUTION 0.15% ¦n¹³¤£¥Î½Õ¾¯
+BC23695421	ALPHAGAN P OPHTHALMIC SOLUTION 0.15% å¥½åƒä¸ç”¨èª¿åŠ‘
 SALPHA
-½T¹ê¤£¥Î½Õ¾¯
+ç¢ºå¯¦ä¸ç”¨èª¿åŠ‘
 
-©xºa
+å®˜æ¦®
 
 select	*
 from	al.dbo.tbl_pijia as A

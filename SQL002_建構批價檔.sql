@@ -1,5 +1,5 @@
---­º¥ı¤U¸ü¤é¦¬¤J³øªí,¦U°|°Ï
---¦s¦¨csvÀÉ, §R°£¹q¸Ü¦a§}°êÄy
+ï»¿--é¦–å…ˆä¸‹è¼‰æ—¥æ”¶å…¥å ±è¡¨,å„é™¢å€
+--å­˜æˆcsvæª”, åˆªé™¤é›»è©±åœ°å€åœ‹ç±
 --ABCDEFGHIKLM
 /*
 bulk insert [BL].[dbo].tbl_shouru
@@ -25,55 +25,55 @@ with
 --L 18
 --M 60
 
---­×°Å
+--ä¿®å‰ª
 delete
 FROM BL.DBO.TBL_SHOURU
-WHERE ¶µ¦¸='¦X­p¡G'
-
-delete
-FROM BL.DBO.TBL_SHOURU
-WHERE ¶µ¦¸='¶µ¦¸'
+WHERE é …æ¬¡='åˆè¨ˆï¼š'
 
 delete
 FROM BL.DBO.TBL_SHOURU
-WHERE ª¬ºA is null
+WHERE é …æ¬¡='é …æ¬¡'
+
+delete
+FROM BL.DBO.TBL_SHOURU
+WHERE ç‹€æ…‹ is null
 
 
 
---¶×¤JPIJIA
+--åŒ¯å…¥PIJIA
 insert	[AL].[dbo].[tbl_pijia]
-SELECT [¦¬¾Ú¸¹] as [rid]
-      ,[§å»ù¤H­û] as [op]
-      ,[¬İ¶E¤é´Á] as [SDATE]
-      ,[¤È§O] as [VIST]
-      ,[¶E§O] as [RMNO]
-      ,[¬ì§O] as [DEPTNAME]
-      ,[Âå®v] as [DOCTNAME]
-      ,[¨­¤À] as [POSINAME]
-      ,[´NÂå§Ç¸¹] as [HEATH_CARD]
-      ,[Àu§K] as [Youmian]
-      ,[³¡¤À­t¾á] as [PAYNO]
-      ,[¯f¾ú¸¹] as [cid]
-      ,[¨­¤ÀÃÒ¸¹] as [uid]
-      ,[±wªÌ©m¦W] as [cname]
-      ,[ÂåÀø¶O¥Î] as [MedFee]
-      ,[±¾¸¹¶O¥Î] as [RegFee]
-      ,[³¡¤À­t¾á2] as [Copay]
-      ,[©ãª÷] as [Deposit]
-      ,[¦Û¥Iª÷ÃB] as [SelfPay]
-      ,[ÃÄ¶O¥[­«] as [PharmW]
-      ,[¤í¦¬] as [Arrears]
-      ,[§é¦©] as [Discount]
-      ,[À³¦¬ª÷ÃB] as [AMTreceivable]
-      ,[¹ê¦¬ª÷ÃB] as [AMTreceived]
-      ,left([»¡©ú],2) as [remark]
+SELECT [æ”¶æ“šè™Ÿ] as [rid]
+      ,[æ‰¹åƒ¹äººå“¡] as [op]
+      ,[çœ‹è¨ºæ—¥æœŸ] as [SDATE]
+      ,[åˆåˆ¥] as [VIST]
+      ,[è¨ºåˆ¥] as [RMNO]
+      ,[ç§‘åˆ¥] as [DEPTNAME]
+      ,[é†«å¸«] as [DOCTNAME]
+      ,[èº«åˆ†] as [POSINAME]
+      ,[å°±é†«åºè™Ÿ] as [HEATH_CARD]
+      ,[å„ªå…] as [Youmian]
+      ,[éƒ¨åˆ†è² æ“”] as [PAYNO]
+      ,[ç—…æ­·è™Ÿ] as [cid]
+      ,[èº«åˆ†è­‰è™Ÿ] as [uid]
+      ,[æ‚£è€…å§“å] as [cname]
+      ,[é†«ç™‚è²»ç”¨] as [MedFee]
+      ,[æ›è™Ÿè²»ç”¨] as [RegFee]
+      ,[éƒ¨åˆ†è² æ“”2] as [Copay]
+      ,[æŠ¼é‡‘] as [Deposit]
+      ,[è‡ªä»˜é‡‘é¡] as [SelfPay]
+      ,[è—¥è²»åŠ é‡] as [PharmW]
+      ,[æ¬ æ”¶] as [Arrears]
+      ,[æŠ˜æ‰£] as [Discount]
+      ,[æ‡‰æ”¶é‡‘é¡] as [AMTreceivable]
+      ,[å¯¦æ”¶é‡‘é¡] as [AMTreceived]
+      ,left([èªªæ˜],2) as [remark]
     	,NULL as [CASENO]
 		,NULL as G
   FROM [BL].[dbo].[tbl_shouru]
-  where	[¦¬¾Ú»¡©ú] is null and [¦¬¾Ú¸¹] not in (select rid from al.dbo.tbl_pijia where SDATE>'20190201') and [¬İ¶E¤é´Á] > '20190401'
+  where	[æ”¶æ“šèªªæ˜] is null and [æ”¶æ“šè™Ÿ] not in (select rid from al.dbo.tbl_pijia where SDATE>'20190201') and [çœ‹è¨ºæ—¥æœŸ] > '20190401'
 
 
--- ´N¬O­n±Ntbl_opd »P§å»ùÀÉ°t¹ï
+-- å°±æ˜¯è¦å°‡tbl_opd èˆ‡æ‰¹åƒ¹æª”é…å°
 update	[AL].[dbo].[tbl_opd]
 set		[Pijia]=B.rid
 from	[AL].[dbo].[tbl_opd] as A
@@ -89,7 +89,7 @@ from [AL].[dbo].[tbl_opd]
 where pijia is null and SDATE between '20170228' and '20190430'
 */
 
---¤Ï¦VPijiaÀÉ¤]­nmatch
+--åå‘Pijiaæª”ä¹Ÿè¦match
 select	*
 from	al.dbo.tbl_pijia
 where caseno is null

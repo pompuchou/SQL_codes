@@ -1,21 +1,21 @@
---±¾¸¹¶O 106¦~
+ï»¿--æ›è™Ÿè²» 106å¹´
 /*
 select	sum(convert(float,RegFee))
 from	al.dbo.tbl_pijia
 where	SDATE between '20170101' and '20171231'
 		and RegFee not in (0, 950)
-		and POSINAME not in ('¦Û¶O')
+		and POSINAME not in ('è‡ªè²»')
 */
 
---±¾¸¹¶O 107¦~ 
+--æ›è™Ÿè²» 107å¹´ 
 
 select	sum(convert(float,RegFee))
 from	al.dbo.tbl_pijia
 where	SDATE between '20180101' and '20181231'
 		and RegFee not in (0, 950)
-		and POSINAME not in ('¦Û¶O')
+		and POSINAME not in ('è‡ªè²»')
 
---¦Lªáµ|
+--å°èŠ±ç¨…
 --1,2	178705
 --3,4	201499
 --5,6	209993

@@ -1,20 +1,20 @@
-select	rid,
+ï»¿select	rid,
 	count(*) as N
 from	al.dbo.tbl_pijia
 group by rid
 order by  count(SDATE) desc, rid
 
 
---¬O§_¦b±M®×¤º¥HÃÄª«Âå¥Oªí§@¬°¤À§O
---¹w³]¦b±M®×¤º
--- ('¸t·R','¸t·R­û¤u','±Ò´¼','±Ò´¼­û¤u','¥Ñ®Ú','¤è¦à','¤è¦à­û¤u','´º¤¯','­»¶é','­»¶é­û¤u','Æ[­µ','Æ[­µ­û¤u','®ç¶é','®ç¶é­û¤u','¸Û«H','²»¨|','¬K·u','¬K·u­û¤u','¥@¬ü')
---¹w³]¤£¦b±M®×¤º
---¦Û¶O´N¥ş¤£¦b½d³ò¤º
---('®a¤H')
+--æ˜¯å¦åœ¨å°ˆæ¡ˆå…§ä»¥è—¥ç‰©é†«ä»¤è¡¨ä½œç‚ºåˆ†åˆ¥
+--é è¨­åœ¨å°ˆæ¡ˆå…§
+-- ('è–æ„›','è–æ„›å“¡å·¥','å•Ÿæ™º','å•Ÿæ™ºå“¡å·¥','ç”±æ ¹','æ–¹èˆŸ','æ–¹èˆŸå“¡å·¥','æ™¯ä»','é¦™åœ’','é¦™åœ’å“¡å·¥','è§€éŸ³','è§€éŸ³å“¡å·¥','æ¡ƒåœ’','æ¡ƒåœ’å“¡å·¥','èª ä¿¡','ç¥¥è‚²','æ˜¥æš‰','æ˜¥æš‰å“¡å·¥','ä¸–ç¾')
+--é è¨­ä¸åœ¨å°ˆæ¡ˆå…§
+--è‡ªè²»å°±å…¨ä¸åœ¨ç¯„åœå…§
+--('å®¶äºº')
 
---tbl_pijia ¥[¤@Äæ¦ìG
+--tbl_pijia åŠ ä¸€æ¬„ä½G
 
---CASENO¤wµL­«½Æ
+--CASENOå·²ç„¡é‡è¤‡
 select	*
 from	al.dbo.tbl_pijia
 where CASENO in
@@ -28,7 +28,7 @@ select	*
 from	al.dbo.tbl_pijia as A
 
 
---¦p¦ó³s±µ
+--å¦‚ä½•é€£æ¥
 
 select	A.caseno,
 	Avg(C.G) as G
@@ -39,11 +39,11 @@ from	al.dbo.tbl_pijia as A
 	left outer join
 		al.dbo.p_group as C
 		on B.rid=C.rid
-where	A.CASENO is not null and CLASS='ÃÄ«~'
+where	A.CASENO is not null and CLASS='è—¥å“'
 group by A.caseno
 
 
---¼g¤Jpijia
+--å¯«å…¥pijia
 update al.dbo.tbl_pijia
 set		G=Y.Gt
 from	al.dbo.tbl_pijia as X
@@ -57,7 +57,7 @@ from	al.dbo.tbl_pijia as A
 	left outer join
 		al.dbo.p_group as C
 		on B.rid=C.rid
-where	A.CASENO is not null and CLASS='ÃÄ«~'
+where	A.CASENO is not null and CLASS='è—¥å“'
 group by A.caseno) as Y
 on X.caseno=Y.caseno
 
@@ -92,8 +92,8 @@ from	al.dbo.tbl_pijia as A
 	left outer join
 		al.dbo.p_group as C
 		on B.rid=C.rid
-where	A.CASENO is not null and CLASS='ÃÄ«~' and A.G=0.2
---AC180917302007 À³¸Ó¬O¿é¤J¿ù»~, Äİ©ó0 ¶E©Òºİ
+where	A.CASENO is not null and CLASS='è—¥å“' and A.G=0.2
+--AC180917302007 æ‡‰è©²æ˜¯è¼¸å…¥éŒ¯èª¤, å±¬æ–¼0 è¨ºæ‰€ç«¯
 --update al.dbo.tbl_pijia
 set	G=0
 where	CASENO='AC180917302007'
@@ -107,8 +107,8 @@ from	al.dbo.tbl_pijia as A
 	left outer join
 		al.dbo.p_group as C
 		on B.rid=C.rid
-where	A.CASENO is not null and CLASS='ÃÄ«~' and A.G=0.25
---³£¬O¿é¤J¿ù»~
+where	A.CASENO is not null and CLASS='è—¥å“' and A.G=0.25
+--éƒ½æ˜¯è¼¸å…¥éŒ¯èª¤
 --AC180521502005
 --AC180622502002
 --AC170612102002
@@ -126,7 +126,7 @@ from	al.dbo.tbl_pijia as A
 	left outer join
 		al.dbo.p_group as C
 		on B.rid=C.rid
-where	A.CASENO is not null and CLASS='ÃÄ«~' and A.G between 0.33 and 0.34
+where	A.CASENO is not null and CLASS='è—¥å“' and A.G between 0.33 and 0.34
 --AC190225102017
 --AC171118102011
 --update al.dbo.tbl_pijia
@@ -142,8 +142,8 @@ from	al.dbo.tbl_pijia as A
 	left outer join
 		al.dbo.p_group as C
 		on B.rid=C.rid
-where	A.CASENO is not null and A.G is null and B.CLASS='ÃÄ«~'
---Äİ©ó±M®×
+where	A.CASENO is not null and A.G is null and B.CLASS='è—¥å“'
+--å±¬æ–¼å°ˆæ¡ˆ
 --AC170309102016
 --AC170406101016
 --AC170727101017
@@ -151,22 +151,22 @@ where	A.CASENO is not null and A.G is null and B.CLASS='ÃÄ«~'
 --update al.dbo.tbl_pijia
 set	G=1
 where	CASENO in ('AC170309102016','AC170406101016','AC170727101017','AC170921103005')
---Äİ©ó¶E©Ò
---¦]¬°¦³¨Ç½X¤w¸g¤£¦A¨Ï¥Î¤F
+--å±¬æ–¼è¨ºæ‰€
+--å› ç‚ºæœ‰äº›ç¢¼å·²ç¶“ä¸å†ä½¿ç”¨äº†
 --update al.dbo.tbl_pijia
 set	G=0
 where	CASENO in ('AC170306502005','AC170321502001','AC170331502006','AC170418302006','AC170516302001','AC170613502005','AC170630502008','AC170811302007')
 
---Ä~Äò
+--ç¹¼çºŒ
 
---649 µ§¦Û¶O
+--649 ç­†è‡ªè²»
 --update	al.dbo.tbl_pijia
 set G=0
-where	G is null and POSINAME='¦Û¶O'
+where	G is null and POSINAME='è‡ªè²»'
 
 -- 20 cases
 --OFERRCHEW, OGEOD, OMERONOD, 
---¦]¬°¦³¨Ç½X¤w¸g¤£¦A¨Ï¥Î¤F
+--å› ç‚ºæœ‰äº›ç¢¼å·²ç¶“ä¸å†ä½¿ç”¨äº†
 --update al.dbo.tbl_pijia
 set	G=1
 where	CASENO in ('AC170816301031','AC170705301011','AC170510301025','AC170510301012','AC170510301015','AC170405101005','AC170329301036','AC170208101042','AC170301301038','AC170315101017','AC170315301014','AC170208101041','AC170104101017','AC170329101017','AC170426101017','AC170524101015','AC170719101010','AC170913101001','AC180103101030','AC171108101001')
@@ -181,9 +181,9 @@ from	al.dbo.tbl_pijia as A
 		on B.rid=C.rid */
 where	A.CASENO is not null and A.G is null and len(A.remark)=0
 order by B.rid
---276µ§ ¾÷ºc,¨S³B¤èÃÄª«ªº
---166µ§ ¶E©Ò,¨S³B¤èÃÄª«ªº
---¨M©w,¥ş³¡ºâµ{¶E©Òªº
+--276ç­† æ©Ÿæ§‹,æ²’è™•æ–¹è—¥ç‰©çš„
+--166ç­† è¨ºæ‰€,æ²’è™•æ–¹è—¥ç‰©çš„
+--æ±ºå®š,å…¨éƒ¨ç®—ç¨‹è¨ºæ‰€çš„
 
 --update al.dbo.tbl_pijia
 set	G=0
@@ -198,7 +198,7 @@ from	al.dbo.tbl_pijia as A
 	left outer join
 		al.dbo.p_group as C
 		on B.rid=C.rid
-where	A.CASENO is not null and CLASS='ÃÄ«~' and A.G=0.4
+where	A.CASENO is not null and CLASS='è—¥å“' and A.G=0.4
 --update al.dbo.tbl_pijia
 set	G=0
 where	CASENO='AC180724502005'
@@ -212,7 +212,7 @@ from	al.dbo.tbl_pijia as A
 	left outer join
 		al.dbo.p_group as C
 		on B.rid=C.rid
-where	A.CASENO is not null and CLASS='ÃÄ«~' and A.G=0.5
+where	A.CASENO is not null and CLASS='è—¥å“' and A.G=0.5
 --update al.dbo.tbl_pijia
 set	G=0
 where	CASENO='AC190225102018'
@@ -230,7 +230,7 @@ from	al.dbo.tbl_pijia as A
 	left outer join
 		al.dbo.p_group as C
 		on B.rid=C.rid
-where	A.CASENO is not null and CLASS='ÃÄ«~' and A.G between 0.51 and 0.59
+where	A.CASENO is not null and CLASS='è—¥å“' and A.G between 0.51 and 0.59
 --update al.dbo.tbl_pijia
 set	G=0
 where	CASENO='AC190225102018'
@@ -262,19 +262,19 @@ where	G between 0.6 and 0.9
 select	G, count(caseno) as N
 from	al.dbo.tbl_pijia
 group by G
---²×©ó¤À¦n¤F,±M®×17021µ§, ¶E©Ò9116µ§
+--çµ‚æ–¼åˆ†å¥½äº†,å°ˆæ¡ˆ17021ç­†, è¨ºæ‰€9116ç­†
 
 
---ÀË¬d¦³¨S¦³¤À¿ùªº
---¾÷ºc¦b¶E©Ò
+--æª¢æŸ¥æœ‰æ²’æœ‰åˆ†éŒ¯çš„
+--æ©Ÿæ§‹åœ¨è¨ºæ‰€
 select	*
 from	al.dbo.tbl_pijia
-where	G=0 and remark in ('¸t·R','¸t·R­û¤u','±Ò´¼','±Ò´¼­û¤u','¥Ñ®Ú','¤è¦à','¤è¦à­û¤u','´º¤¯','­»¶é','­»¶é­û¤u','Æ[­µ','Æ[­µ­û¤u','®ç¶é','®ç¶é­û¤u','¸Û«H','²»¨|','¬K·u','¬K·u­û¤u','¥@¬ü')
+where	G=0 and remark in ('è–æ„›','è–æ„›å“¡å·¥','å•Ÿæ™º','å•Ÿæ™ºå“¡å·¥','ç”±æ ¹','æ–¹èˆŸ','æ–¹èˆŸå“¡å·¥','æ™¯ä»','é¦™åœ’','é¦™åœ’å“¡å·¥','è§€éŸ³','è§€éŸ³å“¡å·¥','æ¡ƒåœ’','æ¡ƒåœ’å“¡å·¥','èª ä¿¡','ç¥¥è‚²','æ˜¥æš‰','æ˜¥æš‰å“¡å·¥','ä¸–ç¾')
 
---¶E©Ò¦b¾÷ºc
+--è¨ºæ‰€åœ¨æ©Ÿæ§‹
 select	*
 from	al.dbo.tbl_pijia
-where	G=1 and remark not in ('¸t·R','¸t·R­û¤u','±Ò´¼','±Ò´¼­û¤u','¥Ñ®Ú','¤è¦à','¤è¦à­û¤u','´º¤¯','­»¶é','­»¶é­û¤u','Æ[­µ','Æ[­µ­û¤u','®ç¶é','®ç¶é­û¤u','¸Û«H','²»¨|','¬K·u','¬K·u­û¤u','¥@¬ü')
+where	G=1 and remark not in ('è–æ„›','è–æ„›å“¡å·¥','å•Ÿæ™º','å•Ÿæ™ºå“¡å·¥','ç”±æ ¹','æ–¹èˆŸ','æ–¹èˆŸå“¡å·¥','æ™¯ä»','é¦™åœ’','é¦™åœ’å“¡å·¥','è§€éŸ³','è§€éŸ³å“¡å·¥','æ¡ƒåœ’','æ¡ƒåœ’å“¡å·¥','èª ä¿¡','ç¥¥è‚²','æ˜¥æš‰','æ˜¥æš‰å“¡å·¥','ä¸–ç¾')
 
 
 

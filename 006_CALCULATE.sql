@@ -1,4 +1,4 @@
---¤H¼Æ
+ï»¿--äººæ•¸
 select	left(CASENO,6) as YM,
 		count(*) as N
 from	al.dbo.tbl_pijia
@@ -6,7 +6,7 @@ where	G=1
 group by left(CASENO,6)
 order by left(CASENO,6)
 
---¶E¹î¶O
+--è¨ºå¯Ÿè²»
 select	left(A.CASENO,6) as YM,
 		count(A.CASENO) as N,
 		sum(convert(float,B.AMT)) as AMT
@@ -18,15 +18,15 @@ where	A.G=1 and B.rid in ('01031C','00184C','00109C','00158C','00110C','01031','
 group by left(A.CASENO,6)
 order by left(A.CASENO,6)
 
---­×¥¿¤@­Ó°İÃD 01031C¦b 201702¤Î¤§«e¬O318
+--ä¿®æ­£ä¸€å€‹å•é¡Œ 01031Cåœ¨ 201702åŠä¹‹å‰æ˜¯318
 --00184C 569
 
---¦³136
+--æœ‰136
 --update	tbl_opd_order
 set	PRICE='318.0', AMT='318.0'
 where	SDATE<'20170301' and rid='01031C' and AMT='338.0'
 
---¦³946µ§
+--æœ‰946ç­†
 --update	tbl_opd_order
 set	PRICE='338.0', AMT='338.0'
 where	SDATE>'20170228' and rid='01031C' and AMT='318.0'
@@ -53,14 +53,14 @@ group by left(A.CASENO,6)
 order by left(A.CASENO,6)
 
 
---ÃÄ«~
+--è—¥å“
 select	left(A.CASENO,6) as YM,
 		sum(convert(float,B.AMT)) as AMT
 from	al.dbo.tbl_pijia as A
 	left outer join
 		al.dbo.tbl_opd_order as B
 	on A.CASENO=B.CASENO
-where	A.G=1 and B.CLASS='ÃÄ«~' and B.CHRONIC=3
+where	A.G=1 and B.CLASS='è—¥å“' and B.CHRONIC=3
 group by left(A.CASENO,6)
 order by left(A.CASENO,6)
 
