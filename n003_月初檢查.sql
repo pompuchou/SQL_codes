@@ -5,7 +5,7 @@ declare @end_date date
 declare @YM nvarchar(10)
 
 --設定日期
-set @YM='10810'
+set @YM='10811'
 set @begin_date=convert(nvarchar(8),convert(int,left(@YM,3))+1911)+right(@YM,2)+'01'
 set @end_date=dateadd(dd,-1,dateadd(mm,1,@begin_date))
 
@@ -46,10 +46,11 @@ from	[al].[dbo].[tbl_schedule]
 --10806 1095
 --10808 1313
 --10809 1104
---10910 1313
+--10810 1313
+--10811 1314
 
 bulk insert [BL].[dbo].tbl_upload
-from 'C:\care_3532017578_10810.csv'
+from 'C:\care_3532017578_10811.csv'
 with
 (
 	firstrow=1,
