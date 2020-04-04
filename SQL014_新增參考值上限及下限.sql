@@ -28,9 +28,13 @@ insert [AL].[dbo].[p_lab] ([iid]
       ,[abb]
       ,[tub]
       ,[npo])
-VALUES ('024A', 'Phenobarbital,Luminal', 'ug/ml','15-40,Toxic >40','15','40','10525B','10525B','Phenobarbital','生',NULL),
+VALUES ('043A', 'Morphine-定量', NULL,'negative',NULL,NULL,NULL,'L-mor','Morphine-定量','尿',NULL),
+VALUES ('030A', 'Methamphetamin-定量', NULL,'negative',NULL,NULL,NULL,'L-amp','Methamphetamin-定量','尿',NULL),
        ('351', 'LDH', 'U/L', '<250', NULL, '250', '09033','09033','LDH','生', NULL )
 
 --VALUES ('452', 'C-Reactive Protein', 'mg/dl','<0.5',NULL,'5','12015C','12015C','CRP','生',NULL),
 --       ('351', 'LDH', 'U/L', '<250', NULL, '250', '09033','09033','LDH','生', NULL )
 --VALUES ('024A', 'Phenobarbital,Luminal', 'ug/ml','15-40,Toxic >40','15','40','10525B','10525B','Phenobarbital','生',NULL),
+
+delete from [AL].[dbo].[p_lab]
+where iid='030A'

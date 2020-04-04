@@ -5,7 +5,7 @@ declare @end_date date
 declare @YM nvarchar(10)
 
 --設定日期
-set @YM='10902'
+set @YM='10903'
 set @begin_date=convert(nvarchar(8),convert(int,left(@YM,3))+1911)+right(@YM,2)+'01'
 set @end_date=dateadd(dd,-1,dateadd(mm,1,@begin_date))
 
