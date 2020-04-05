@@ -3,11 +3,11 @@ declare @t2 table (CASENO varchar(14), uid varchar(10), SDATE date, rid varchar(
 declare @t3 table (CASENO varchar(14), uid varchar(10), SDATE date, rid varchar(50), DAYS tinyint, DA_up date)
 --看診日期
 declare @d date
-set @d='20200415'
+set @d='20200331'
 
 --看診單位
 declare @i nvarchar(10)
-set @i='方舟'
+set @i='香園'
 
 --決定前三次日期
 declare @smid int
@@ -42,7 +42,7 @@ SELECT [CASENO]
       ,[HC]
       ,case when [CHRONIC]='' then 1 else [CHRONIC] end
   FROM [al].[dbo].[tbl_opd_order]
-  where datediff(d,[SDATE],getdate())<100 and [CLASS]='藥品' and [TIMES_DAY] not in ('PRN','BIDPRN','TIDPRN','QIDPRN') and DAYS between 28 and 30 and SDATE in (@d1, @d2, @d3)
+  where datediff(d,[SDATE],getdate())<100 and [CLASS]='藥品' and [TIMES_DAY] not in ('PRN','BIDPRN','TIDPRN','QIDPRN') and DAYS between 28 and 30 and SDATE in (@d1, @d2, @d3) and substring(CASENO,10,2) in ('01','03')
 
 insert into @t2
 select	CASENO, uid, SDATE, rid, case when DAYS>30 then DAYS else DAYS*CHRONIC end
@@ -54,7 +54,6 @@ from	@t2
 
 --三個條件,處方日期, 處方天數, 慢箋,又FUZZY?
 
-select	*
+select	distinct uid
 from	@t3
 where	datediff(d, @d, DA_up) between 0 and 6
-order by CASENO
