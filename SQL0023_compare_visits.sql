@@ -11,12 +11,12 @@ declare @o table (uid varchar(10), rid varchar(50), TIMES_DAY varchar(10), METHO
 --看診日期
 declare @d date
 declare @VIST nvarchar(20)
-set @d='20200318'
+set @d='20200409'
 set @VIST='上午'
 
 --看診單位
 declare @i nvarchar(10)
-set @i='方舟'
+set @i='啟智'
 
 --找出之前三個月內看診的天數
 --定義Cursor並打開
@@ -51,7 +51,7 @@ SELECT B.[uid]
   FROM [al].[dbo].[tbl_opd] as A
   LEFT OUTER JOIN [al].[dbo].[tbl_opd_order] as B
   ON A.[CASENO]=B.[CASENO]
-  WHERE A.[SDATE]=@SDATE and A.[VIST]=@VIST1 and A.[RMNO] in (1,3) and B.[CLASS]='藥品' and B.[DAYS] between 14 and 30
+  WHERE A.[SDATE]=@SDATE and A.[VIST]=@VIST1 and A.[RMNO] in (1,3) and B.[CLASS]='藥品' and B.[DAYS] between 28 and 30
 Fetch NEXT FROM MyCursor INTO @SDATE, @VIST1
 END
 --開始迴圈跑Cursor End
@@ -61,6 +61,7 @@ CLOSE MyCursor
 DEALLOCATE MyCursor
 
 --篩選到期前6天內的處方
+--@t2是預計看診的
 insert into @t2
 SELECT [uid]
       ,[SDATE]
@@ -70,10 +71,10 @@ SELECT [uid]
       ,[TIME_QTY1]
 	  ,[DAYS]
 from	@t1
-where	datediff(d, @d, (dateadd(d, DAYS, SDATE))) between 0 and 6
+where	datediff(d, @d, (dateadd(d, DAYS, SDATE))) between -6 and 6
 
 --三個條件,處方日期, 處方天數, 慢箋,又FUZZY?
-
+--@t3 是實際上看診的
 INSERT INTO @t3
 SELECT B.[uid]
       ,B.[SDATE]
@@ -85,11 +86,12 @@ SELECT B.[uid]
   FROM [al].[dbo].[tbl_opd] as A
   LEFT OUTER JOIN [al].[dbo].[tbl_opd_order] as B
   ON A.[CASENO]=B.[CASENO]
-  WHERE A.[SDATE]=@d and A.[VIST]=@VIST and A.[RMNO] in (1,3) and B.[CLASS]='藥品' and B.[DAYS] between 14 and 30
+  WHERE A.[SDATE]=@d and A.[VIST]=@VIST and A.[RMNO] in (1,3) and B.[CLASS]='藥品' and B.[DAYS] between 28 and 30
 
   --@t2 expected visits
   --@t3 actual visits
 
+  --@i1 expected exists, but actual absent
 INSERT INTO @i1
 SELECT A.[uid]
       ,A.[SDATE]
@@ -105,6 +107,7 @@ FROM	@t2 AS A
 WHERE B.[uid] IS NULL
 ORDER BY A.[uid]
 
+  --@i1 expected absent, but actual exists
 INSERT INTO @i2
 SELECT B.[uid]
       ,B.[SDATE]
@@ -119,6 +122,19 @@ FROM	@t2 AS A
 		ON A.[uid]=B.[uid] and A.[rid]=B.[rid] and A.[TIMES_DAY]=B.[TIMES_DAY] and A.[TIME_QTY1]=B.[TIME_QTY1]
 WHERE A.[uid] IS NULL AND B.[TIMES_DAY] not in ('PRN')
 ORDER BY B.[uid]
+
+INSERT INTO @o
+SELECT distinct A.[uid]
+      ,NULL
+      ,NULL
+      ,NULL
+      ,NULL
+      ,'改'+convert(varchar(10),A.[DAYS])+'天為'+convert(varchar(10),B.[DAYS])+'天'
+FROM	@t2 AS A
+		INNER JOIN
+		@t3 AS B
+		ON A.[uid]=B.[uid] and A.[rid]=B.[rid] and A.[TIMES_DAY]=B.[TIMES_DAY] and A.[TIME_QTY1]=B.[TIME_QTY1]
+WHERE B.[TIMES_DAY] not in ('PRN') AND A.[DAYS] <> B.[DAYS]
 
 INSERT INTO @o
 select	B.[uid]
@@ -188,7 +204,8 @@ WHERE A.[uid] is NULL and B.[uid] in (SELECT DISTINCT [uid] FROM @t2)
 
 ORDER BY A.[uid], B.[uid]
 
-SELECT	DISTINCT A.[uid]
+SELECT	DENSE_RANK() OVER (ORDER BY A.uid, A.COMMENT)
+	   ,A.[uid]
 	   ,B.[cname]
 	   ,C.[r06]
 	   ,A.[TIME_QTY1]

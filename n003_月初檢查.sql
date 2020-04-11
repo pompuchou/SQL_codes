@@ -51,9 +51,10 @@ from	[al].[dbo].[tbl_schedule]
 --10812 1273
 --10901 1319
 --10902 1277
+--10903 1157
 
 bulk insert [BL].[dbo].tbl_upload
-from 'C:\care_3532017578_10902.csv'
+from 'C:\care_3532017578_10903.csv'
 with
 (
 	firstrow=1,
