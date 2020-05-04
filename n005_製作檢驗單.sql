@@ -4,8 +4,8 @@ declare @d date	--日期
 declare @v nvarchar(5) --午別
 declare @r nvarchar(5) --診別
 
-set	@d='20200325'
-set @v='上午'
+set	@d='20200422'
+set @v='下午'
 set @r='1'
 
 insert into @t1
