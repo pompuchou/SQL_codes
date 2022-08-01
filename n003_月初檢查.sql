@@ -65,7 +65,7 @@ with
 )
 
 bulk insert [AL].[dbo].tbl_schedule
-from 'C:\schedule2020.csv'
+from 'C:\schedule2021.csv'
 with
 (
 	firstrow=1,
