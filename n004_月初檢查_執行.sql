@@ -5,7 +5,7 @@ declare @YM nvarchar(10)
 declare @t1 table (iid nvarchar(50), sname nvarchar(10), uid nvarchar(10), bd date, cname nvarchar(50), sdate datetime)
 
 --設定日期
-set @YM='11106'
+set @YM='11202'
 set @begin_date=convert(nvarchar(8),convert(int,left(@YM,3))+1911)+right(@YM,2)+'01'
 set @end_date=dateadd(dd,-1,dateadd(mm,1,@begin_date))
 
